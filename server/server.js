@@ -1332,45 +1332,53 @@
         sessions: {
         }
     };
+    const importedData = require('./data')
+    // const importedData = data
     var seedData = {
-        items: {
-            'b559bd24-5fb6-4a42-bc48-40c17dea649d': {
-                '_ownerId': '35c62d76-8152-4626-8712-eeb96381bea8',
-                'title': 'Shovel',
-                'description': 'Tool for defending against the evil dead.',
-                'price': '40.00',
-                'imageUrl': ['/images/shovel.jpg'],
-                'category': 'Garden',
-                '_createdOn': 1617797078108
-            },
-            '2949b54d-b163-4a00-b65c-41fb8b641561': {
-                '_ownerId': '35c62d76-8152-4626-8712-eeb96381bea8',
-                'title': 'Chainsaw',
-                'description': 'Good extension for your hand.',
-                'price': '349.90',
-                'imageUrl': ['/images/chainsaw.jpg'],
-                'category': 'Garden',
-                '_createdOn': 1617799443179
-            },
-            'f6f54fcd-0469-470b-8ffa-a33ae6c7a524': {
-                '_ownerId': '847ec027-f659-4086-8032-5173e2f9c93a',
-                'title': 'The Zombie Survival Guide',
-                'description': 'The Zombie Survival Guide is your key to survival against the hordes of undead who may be stalking you right now.',
-                'price': '10.36',
-                'imageUrl': ['/images/theZombieSurvivalGuide.jpg'],
-                'category': 'Books',
-                '_createdOn': 1617799658349
-            },
-            'f6f54fcd-0469-470b-8ffa-a33ae6c7a524': {
-                '_ownerId': '847ec027-f659-4086-8032-5173e2f9c93a',
-                'title': 'Nissan 350z Premium Pack',
-                'description': 'The car is in good condition. I\'m selling it because I need the money immediately to buy stuff for protection against the zombie outbreak.',
-                'price': '16000.00',
-                'imageUrl': ['/images/nissan350z/pic1.jpg', '/images/nissan350z/pic2.jpg', '/images/nissan350z/pic3.jpg', '/images/nissan350z/pic4.jpg', '/images/nissan350z/pic5.jpg'],
-                'category': 'Cars',
-                '_createdOn': 1617799658349
-            }
-        },
+        items: importedData
+        // {
+        // allItems: importedData,
+        //     myBooks: [],
+        // }
+        // {
+        //     'b559bd24-5fb6-4a42-bc48-40c17dea649d': {
+        //         '_ownerId': '35c62d76-8152-4626-8712-eeb96381bea8',
+        //         'title': 'Shovel',
+        //         'description': 'Tool for defending against the evil dead.',
+        //         'price': 40.00,
+        //         'imageUrl': ['/images/shovel.jpg'],
+        //         'category': 'Garden',
+        //         '_createdOn': 1617797078108
+        //     },
+        //     '2949b54d-b163-4a00-b65c-41fb8b641561': {
+        //         '_ownerId': '35c62d76-8152-4626-8712-eeb96381bea8',
+        //         'title': 'Chainsaw',
+        //         'description': 'Good extension for your hand.',
+        //         'price': 349.90,
+        //         'imageUrl': ['/images/chainsaw.jpg'],
+        //         'category': 'Garden',
+        //         '_createdOn': 1617799443179
+        //     },
+        //     'f6f54fcd-0469-470b-8fza-a33ae6c7a524': {
+        //         '_ownerId': '847ec027-f659-4086-8032-5173e2f9c93a',
+        //         'title': 'The Zombie Survival Guide',
+        //         'description': 'The Zombie Survival Guide is your key to survival against the hordes of undead who may be stalking you right now.',
+        //         'price': 10.36,
+        //         'imageUrl': ['/images/theZombieSurvivalGuide.jpg'],
+        //         'category': 'Books',
+        //         '_createdOn': 1617799658349
+        //     },
+        //     'f6f54fcd-0469-470b-8ffa-a33ae6c7a524': {
+        //         '_ownerId': '847ec027-f659-4086-8032-5173e2f9c93a',
+        //         'title': 'Nissan 350z Premium Pack',
+        //         'description': 'The car is in good condition. I\'m selling it because I need the money immediately to buy stuff for protection against the zombie outbreak.',
+        //         'price': 16000.00,
+        //         'imageUrl': ['/images/nissan350z/pic1.jpg', '/images/nissan350z/pic2.jpg', '/images/nissan350z/pic3.jpg', '/images/nissan350z/pic4.jpg', '/images/nissan350z/pic5.jpg'],
+        //         'category': 'Cars',
+        //         '_createdOn': 1617799658349
+        //     }
+        // }
+        ,
         likes: {}
     };
     var rules$1 = {
