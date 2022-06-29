@@ -1,9 +1,12 @@
 import "./Header.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import UserBtn from "./AccountBtn/UserBtn"
 import GuestBtn from "./AccountBtn/GuestBtn"
-
 import logo from "../Images/logo/logo-stx-white-yellow.png"
+
 
 export default function Header() {
     const user = localStorage.getItem('user');
@@ -11,7 +14,7 @@ export default function Header() {
     return (
         <header className={"header"}>
             <div className={"logo-group"}>
-                <i className="fa-solid fa-bars"></i>
+                <FontAwesomeIcon icon={faBars} className={"i"} />
                 <img src={logo} alt="Logo" className={"logo"} />
                 <form action="/" className={"search-bar-form"}>
                     <input
@@ -20,13 +23,13 @@ export default function Header() {
                         placeholder="Search for a product"
                     />
                     <button type="submit" className={"search-button"}>
-                        <i className="fa-solid fa-magnifying-glass"></i>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} className={"i"} />
                     </button>
                 </form>
             </div>
             <ul className={"nav-list-menu"}>
                 <li>
-                    <i className="fa-regular fa-heart"></i>
+                    <FontAwesomeIcon icon={faHeart} className={"i"} />
                 </li>
                 {user ? <UserBtn></UserBtn> : <GuestBtn></GuestBtn>}
                 <li>
