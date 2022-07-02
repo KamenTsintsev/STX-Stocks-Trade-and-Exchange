@@ -6,9 +6,8 @@ export default function UserBtn() {
 
     return (
         <li className="user-btn user">
-            <p>Sign up</p>
+            <p>Hello!</p>
             <img src={userIcon} alt="userIcon" className="userIcon" />
-            {/* <i className="fa-regular fa-circle-user"></i> */}
         </li>
     )
 }

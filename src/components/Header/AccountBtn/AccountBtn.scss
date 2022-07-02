@@ -1,3 +1,5 @@
+@use '../../utils/palette.scss' as pal;
+
 .user-btn {
     display: flex;
     align-items: center;
@@ -11,7 +13,7 @@
     }
 
     div {
-        border: 3px solid white;
+        border: 3px solid pal.$gray3;
         border-radius: 6px;
         width: 25.6px;
         height: 25.6px;

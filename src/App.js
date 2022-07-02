@@ -9,14 +9,6 @@ function App() {
 	return (
 		<>
 			<Header></Header>
-
-			<div id="main-content">
-				<Routes>
-					<Route path="/" element={<Catalog />} />
-					<Route path="/create" element={<CreateForm />} />
-					<Route path="/details" element={<Details />} />
-				</Routes>
-			</div>
 		</>
 	);
 }

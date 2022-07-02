@@ -1,19 +1,19 @@
-import "./AccountBtn.scss"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
-// import userIcon from '../../Images/userIcon/userIcon-white.png'
+import "./AccountBtn.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-
-export default function GuestBtn() {
+export default function GuestBtn({ hover, blur, children }) {
 
     return (
-        <li className="user-btn guest">
-            <p>Sign up</p>
+        <li className="user-btn guest"
+            onMouseEnter={hover}
+            onMouseLeave={blur}
+        >
+            <p>Sign in</p>
             <div>
-                <FontAwesomeIcon icon={faUser} className={"i"}></FontAwesomeIcon>
+                <FontAwesomeIcon icon={faUser} className={"i"} />
             </div>
-            {/* <img src={userIcon} alt="userIcon" className="userIcon" /> */}
-            {/* <i className="fa-regular fa-circle-user"></i> */}
+
         </li>
-    )
+    );
 }
