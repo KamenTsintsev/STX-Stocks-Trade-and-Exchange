@@ -1,0 +1,83 @@
+@use '../utils/palette.scss' as pal;
+
+
+.dropdownMenu {
+    width: 200px;
+    position: absolute;
+    top: 60px;
+    margin-left: -70px;
+    text-align: center;
+    background: rgba(pal.$gray3, 0.7);
+    border-radius: 0 0 6px 6px;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+
+    &.active {
+        opacity: 1;
+        display: block;
+        height: auto;
+    }
+
+    &.inactive {
+        animation: hide 1s normal;
+        overflow: hidden;
+    }
+
+    @keyframes hide {
+        0% {
+            opacity: 1;
+            height: auto;
+
+        }
+
+        100% {
+            opacity: 1;
+            height: auto;
+        }
+    }
+
+    // Guest
+    .signInBTN button {
+        margin-top: 15px;
+        width: 80%;
+    }
+
+    .small {
+        color: pal.$gray-1;
+        font-size: 10pt;
+        margin-top: 10px;
+        margin-bottom: 15px;
+
+        span>a {
+            color: pal.$primary0;
+
+            &:hover {
+                color: pal.$secondary-1;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    // User
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+    }
+
+    li {
+        cursor: pointer;
+        // transition: none 0.5s;
+
+        &:hover {
+            background: pal.$primary2;
+        }
+    }
+
+    .dropdownLink {
+        text-decoration: none;
+        color: #ffffff;
+    }
+}
