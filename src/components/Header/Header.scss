@@ -1,1 +1,117 @@
 @use "../utils/palette" as pal;
+
+
+.header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    background: pal.$primary0;
+
+    .navbar {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.2rem;
+    }
+
+    .navbarLogo {
+        height: 30px;
+        cursor: pointer;
+    }
+
+    .leftMenu {
+        width: 40%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .searchBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .searchField {
+        width: 100%;
+        padding: 10px 35px 10px 15px;
+        max-height: 35px;
+        border: none;
+        border-radius: 6px;
+        outline: none;
+    }
+
+    .searchBTN {
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: pal.$secondary0;
+        border-radius: 0 6px 6px 0;
+        border: none;
+        outline: none;
+        margin-left: -35px;
+
+
+        .i {
+            font-size: 12pt;
+            color: pal.$gray-3;
+        }
+    }
+
+
+    .navMenu {
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navLinks {
+        color: pal.$gray3;
+        text-decoration: none;
+        padding: 20px;
+    }
+
+    .favorite {
+        fill: black;
+    }
+}
+
+
+.i {
+    color: pal.$gray3;
+    font-size: 16pt;
+    transition: all .2s ease-in-out;
+}
+
+.i:hover {
+    color: pal.$primary3;
+    border-radius: 4px;
+
+}
+
+.sideMenu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 0.5px solid pal.$gray2;
+    height: 100vh;
+    width: 15vw;
+    top: 0;
+    left: 0;
+    margin-left: -15vw;
+}
+
+.sideMenu.active {
+    display: block;
+    margin-left: 0;
+}
