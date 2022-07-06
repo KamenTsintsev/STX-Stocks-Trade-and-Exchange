@@ -1,3 +1,5 @@
+@use './components/utils/palette.scss' as pal;
+
 /* inter-regular - latin */
 @font-face {
     font-family: 'Inter';
@@ -40,9 +42,9 @@
     font-style: normal;
     font-weight: 700;
     src: local(''),
-        url('./components/fonts/inter-v11-latin-700.woff2') format('woff2'),
+        url('./fonts/inter-v11-latin-700.woff2') format('woff2'),
         /* Chrome 26+, Opera 23+, Firefox 39+ */
-        url('./components/fonts/inter-v11-latin-700.woff') format('woff');
+        url('./fonts/inter-v11-latin-700.woff') format('woff');
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
@@ -52,13 +54,64 @@
     font-style: normal;
     font-weight: 800;
     src: local(''),
-        url('./components/fonts/inter-v11-latin-800.woff2') format('woff2'),
+        url('./fonts/inter-v11-latin-800.woff2') format('woff2'),
         /* Chrome 26+, Opera 23+, Firefox 39+ */
-        url('./components/fonts/inter-v11-latin-800.woff') format('woff');
+        url('./fonts/inter-v11-latin-800.woff') format('woff');
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-* {
-    font-family: Inter;
+h1 {
+    font: 36pt Inter, sans-serif;
+    font-weight: 600;
+    color: pal.$gray0;
+}
+
+h2 {
+    font: 32pt 'Inter', sans-serif;
     font-weight: 500;
+    color: pal.$gray0;
+}
+
+h3 {
+    font: 28pt 'Inter', sans-serif;
+    font-weight: 600;
+    color: pal.$gray0;
+}
+
+h4 {
+    font: 24pt 'Inter', sans-serif;
+    font-weight: 600;
+    color: pal.$gray0;
+}
+
+h5 {
+    font: 18pt 'Inter', sans-serif;
+    font-weight: 600;
+    color: pal.$gray0;
+}
+
+h6 {
+    font: 14pt 'Inter', sans-serif;
+    font-weight: 600;
+    color: pal.$gray0;
+}
+
+p {
+    font: 16pt 'Inter', sans-serif;
+    font-weight: 500;
+
+    &.small {
+        font-size: 12pt;
+        color: pal.$gray3;
+    }
+}
+
+input {
+    font: 13px Inter, sans-serif;
+    font-weight: 600;
+    color: pal.$gray-3;
+
+    ::-webkit-input-placeholder {
+        color: pal.$gray2;
+    }
 }
