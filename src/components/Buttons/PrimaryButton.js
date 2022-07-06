@@ -1,8 +1,5 @@
-import "./Buttons.scss"
+import "./Buttons.scss";
 
-export default (props) => {
-
-    return (
-        <button className={"button primary-button"}>{props.children}</button >
-    )
-}
+export default ({ children }) => {
+    return <button className={"button primaryButton"}>{children}</button>;
+};
