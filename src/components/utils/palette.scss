@@ -1,4 +1,7 @@
 // Grays
+$white: #fff;
+$black: #000;
+$gray4: #f4f4f4;
 $gray3: #EAEAEA;
 $gray2: #939699;
 $gray1: #71757A;
@@ -55,7 +58,67 @@ $positive-1: #00A652;
 $positive-2: #00813F;
 $positive-3: #00572B;
 
+:export {
+    // Grays
+    white: $white;
+    gray4: $gray4;
+    gray3: $gray3;
+    gray2: $gray2;
+    gray1: $gray1;
+    gray0: $gray0;
+    gray-1: $gray-1;
+    gray-2: $gray-2;
+    gray-3: $gray-3;
+    black: $black;
 
+    // Primary
+    primary3: $primary3;
+    primary2: $primary2;
+    primary1: $primary1;
+    primary0: $primary0;
+    primary-1: $primary-1;
+    primary-2: $primary-2;
+    primary-3: $primary-3;
+
+    // Secondary
+    secondary3: $secondary3;
+    secondary2: $secondary2;
+    secondary1: $secondary1;
+    secondary0: $secondary0;
+    secondary-1: $secondary-1;
+    secondary-2: $secondary-2;
+    secondary-3: $secondary-3;
+
+    // Accent
+    accent: $accent;
+
+    // Negative/Danger
+    danger3: $danger3;
+    danger2: $danger2;
+    danger1: $danger1;
+    danger0: $danger0;
+    danger-1: $danger-1;
+    danger-2: $danger-2;
+    danger-3: $danger-3;
+
+    // Neutral/Warning
+    neutral3: $neutral3;
+    neutral2: $neutral2;
+    neutral1: $neutral1;
+    neutral0: $neutral0;
+    neutral-1: $neutral-1;
+    neutral-2: $neutral-2;
+    neutral-3: $neutral-3;
+
+    // Positive/Success
+    positive3: $positive3;
+    positive2: $positive2;
+    positive1: $positive1;
+    positive0: $positive0;
+    positive-1: $positive-1;
+    positive-2: $positive-2;
+    positive-3: $positive-3;
+}
 
 // $danger: #BF1A2F;
 // $warning: #ff911f;
