@@ -16,7 +16,7 @@ export default function Dropdown({ user, dropdown, setDropdown }) {
                     className={"signInBTN"}
                 >
                     <InvertedButton cName={"secondary"}>
-                        {"Sign in"}
+                        {"Login"}
                     </InvertedButton>
                 </Link>
                 <p className="small">
@@ -26,8 +26,9 @@ export default function Dropdown({ user, dropdown, setDropdown }) {
                         <Link
                             to={"/authentication/register"}
                             onClick={() => setDropdown("")}
+                            className={"small"}
                         >
-                            Sign up
+                            Register
                         </Link>
                     </span>
                 </p>

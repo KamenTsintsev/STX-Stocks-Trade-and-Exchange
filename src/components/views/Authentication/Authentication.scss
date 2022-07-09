@@ -1,0 +1,71 @@
+@use '../../utils/palette.scss' as pal;
+
+main {
+    min-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: pal.$gray3;
+
+    .logo {
+        padding: 120px 0 50px 0;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    border: 1px solid rgba(pal.$gray2, 0.5);
+    border-radius: 6px;
+    background-color: pal.$white;
+}
+
+nav {
+    width: calc(100% + 40px);
+
+    .authenticationTabs__navigation {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+
+        li {
+            position: relative;
+            text-align: center;
+            width: 100%;
+            border-bottom: 1px solid rgba(pal.$gray2, 0.5);
+
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                padding: 10px 0;
+            }
+        }
+
+        li a::before {
+            height: 3.5px;
+            background: pal.$primary-1;
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            transition: width 0.5s ease-in-out;
+        }
+
+        li a.active:before {
+            width: 100%;
+        }
+
+        li:first-child a:before {
+            right: 0;
+            left: auto;
+        }
+    }
+}
