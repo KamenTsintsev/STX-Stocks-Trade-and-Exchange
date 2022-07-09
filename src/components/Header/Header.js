@@ -22,7 +22,6 @@ export default function Header() {
     const [dropdown, setDropdown] = useState("");
     const [favorite, setFavorite] = useState(false);
     const user = localStorage.getItem("user");
-
     const onSideMenuClickHandler = () => setSideMenuState(!sideMenuState);
 
     const onMouseOver = (e) => {
@@ -117,7 +116,7 @@ export default function Header() {
                         onMouseOut={onMouseOut}
                     >
                         <Link
-                            to={user ? "/myItems" : "/authentication"}
+                            to={user ? "/myItems" : "/authentication/login"}
                             className={"navLinks i"}
                             onClick={() => setSideMenuState(false)}
                         >
