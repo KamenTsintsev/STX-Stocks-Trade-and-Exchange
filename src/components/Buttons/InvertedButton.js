@@ -1,9 +1,11 @@
 import "./Buttons.scss";
 
-export default ({ cName, children }) => {
+const InvertedButton = ({ cName, type, children }) => {
     return (
-        <button className={"button invertedButton" + " " + cName}>
+        <button className={"button invertedButton" + " " + cName} type={type}>
             {children}
         </button>
     );
 };
+
+export default InvertedButton;
