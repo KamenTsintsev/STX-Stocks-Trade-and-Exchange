@@ -1,5 +1,4 @@
-@use '../utils/palette.scss' as pal;
-
+@use "../utils/palette.scss" as pal;
 
 .dropdownMenu {
     width: 200px;
@@ -7,11 +6,12 @@
     top: 60px;
     margin-left: -70px;
     text-align: center;
-    background: rgba(pal.$gray3, 0.7);
+    background-color: (pal.$gray5);
     border-radius: 0 0 6px 6px;
     opacity: 0;
     height: 0;
     overflow: hidden;
+    z-index: 100;
 
     &.active {
         opacity: 1;
@@ -28,7 +28,6 @@
         0% {
             opacity: 1;
             height: auto;
-
         }
 
         100% {
@@ -49,7 +48,7 @@
         margin-top: 10px;
         margin-bottom: 15px;
 
-        span>a {
+        span > a {
             color: pal.$primary0;
 
             &:hover {
@@ -64,7 +63,6 @@
     ul {
         list-style: none;
         padding: 0;
-
     }
 
     li {

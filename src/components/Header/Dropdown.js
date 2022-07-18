@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { MenuItems } from "./MenuItems";
 
 import "./Dropdown.scss";
-import InvertedButton from "../Buttons/InvertedButton";
+import PrimaryButton from "../Buttons/PrimaryButton";
 
-export default function Dropdown({ user, dropdown, setDropdown }) {
-    if (!user) {
+export default function Dropdown({ token, dropdown, setDropdown }) {
+    if (!token) {
         return (
             <div className={"dropdownMenu" + " " + dropdown}>
                 <Link
@@ -15,9 +15,7 @@ export default function Dropdown({ user, dropdown, setDropdown }) {
                     onClick={() => setDropdown("")}
                     className={"signInBTN"}
                 >
-                    <InvertedButton cName={"secondary"}>
-                        {"Login"}
-                    </InvertedButton>
+                    <PrimaryButton cName={"secondary"}>{"Login"}</PrimaryButton>
                 </Link>
                 <p className="small">
                     New around?
@@ -35,6 +33,16 @@ export default function Dropdown({ user, dropdown, setDropdown }) {
             </div>
         );
     } else {
-        return "";
+        return (
+            <div className={"dropdownMenu" + " " + dropdown}>
+                <Link
+                    to={"/logout"}
+                    onClick={() => setDropdown("")}
+                    className={"small"}
+                >
+                    Logout
+                </Link>
+            </div>
+        );
     }
 }
