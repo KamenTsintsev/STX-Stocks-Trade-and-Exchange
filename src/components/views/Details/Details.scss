@@ -1,3 +1,128 @@
-h1 {
-    font-size: 64px;
+@use "../../utils/palette.scss" as pal;
+
+.productDetailsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    max-height: calc(100vh - 60px);
+    overflow-y: scroll;
+
+    .productDetails {
+        display: grid;
+        grid-template-areas: "gallery details order";
+        grid-template-columns: 4fr 4.1fr 1.5fr;
+        column-gap: 30px;
+
+        width: 90%;
+        margin-top: 40px;
+
+        .galleryContainer {
+            grid-area: gallery;
+
+            .sticky {
+                display: flex;
+                justify-content: space-between;
+
+                width: 100%;
+
+                position: sticky;
+                top: 10px;
+
+                .gallery {
+                    display: flex;
+                    flex-direction: column;
+
+                    margin: 0;
+                    margin-right: 20px;
+                    padding-left: 0;
+
+                    list-style: none;
+
+                    li:not(:last-child) {
+                        margin-bottom: 10px;
+                    }
+                }
+
+                .currentImage {
+                    width: 100%;
+                    max-height: 500px;
+
+                    border: 0.5px solid pal.$gray4;
+                    border-radius: 6px;
+                    background-color: pal.$gray6;
+
+                    overflow: hidden;
+
+                    img {
+                        max-width: 100%;
+                        min-width: 80%;
+                    }
+                }
+            }
+        }
+
+        .description {
+            grid-area: details;
+            padding: 0 30px;
+
+            // .title {
+            // }
+            .price {
+                margin: 20px 0;
+            }
+            // .desc {
+            // }
+        }
+
+        .orderNowContainer {
+            grid-area: order;
+            height: 100%;
+
+            .orderNow {
+                position: sticky;
+                top: 0;
+
+                // width: 90%;
+                // margin: 0 auto;
+                padding: 7%;
+                border: 2px solid pal.$gray5;
+                border-radius: 6px;
+                text-align: justify;
+
+                p {
+                    margin: 10% 0;
+                }
+
+                .button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .moreItems {
+        max-width: 100%;
+    }
 }
+
+// .productDetails {
+//     .gallery {
+//         width: 37%;
+//         height: 100%;
+//         img {
+//             position: sticky;
+//             max-width: 100%;
+//         }
+//     }
+
+//     .description {
+//         width: 41%;
+//         padding: 0 50px;
+//     }
+
+//     .orderNow {
+//         width: 18%;
+//     }
+// }
