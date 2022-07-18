@@ -1,6 +1,5 @@
 @use "../utils/palette" as pal;
 
-
 .header {
     display: flex;
     justify-content: center;
@@ -17,7 +16,7 @@
         font-size: 1.2rem;
     }
 
-    .navbarLogo {
+    .logo {
         height: 30px;
         cursor: pointer;
     }
@@ -35,7 +34,6 @@
 
             &:hover .i {
                 color: pal.$primary3;
-
             }
         }
 
@@ -86,7 +84,6 @@
 
     .navLinks {
         .i {
-
             color: pal.$gray6;
             text-decoration: none;
             padding: 20px;
@@ -94,7 +91,6 @@
 
             &:hover {
                 color: pal.$primary3;
-
             }
         }
     }
@@ -104,11 +100,10 @@
     }
 }
 
-
 .i {
     color: pal.$gray6;
     font-size: 20px;
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     cursor: pointer;
 }
 

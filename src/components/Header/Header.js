@@ -14,7 +14,7 @@ import {
     faHeart as solidHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as slimHeart } from "@fortawesome/free-regular-svg-icons";
-import logo from "../Images/logo/logo-stx-white-yellow.png";
+import Logo from "../utils/Logo";
 
 export default function Header({ token }) {
     const [sideMenuState, setSideMenuState] = useState(false);
@@ -49,9 +49,7 @@ export default function Header({ token }) {
                             className={"i"}
                         />
                     </div>
-                    <Link to={"/"}>
-                        <img src={logo} className={"navbarLogo"} alt="logo" />
-                    </Link>
+                    <Logo width={"100px"} fill={"gray6"} className={"logo"} />
                     <form className="searchBar">
                         <input
                             type="search"
