@@ -1,0 +1,28 @@
+@use "../../utils/palette.scss" as pal;
+
+.imageCardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+
+    background-color: pal.$gray6;
+    border: 1px solid pal.$gray4;
+    border-radius: 6px;
+
+    overflow: hidden;
+
+    &.active {
+        border: 1px solid pal.$secondary-1;
+        box-shadow: 0px 0px 7px 0px pal.$secondary0;
+        -webkit-box-shadow: 0px 0px 7px 0px pal.$secondary0;
+    }
+
+    img {
+        max-height: 100%;
+        max-width: 100%;
+    }
+}
