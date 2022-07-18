@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { Link, Routes, Route, useLocation, NavLink } from "react-router-dom";
+import React from "react";
+import { Routes, Route, NavLink } from "react-router-dom";
 import Logo from "../../utils/Logo";
+import "./Authentication.scss";
 import FormLogin from "./FormLogin";
 import FormRegister from "./FormRegister";
-import "./Authentication.scss";
 
 export default function Authentication() {
     return (
-        <main>
+        <main className="authMain">
             <Logo width={"180px"} fill={"primary0"} className={"logo"}></Logo>
             <div className="container">
                 <nav>

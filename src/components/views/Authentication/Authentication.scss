@@ -1,30 +1,34 @@
 @use '../../utils/palette.scss' as pal;
 
-main {
+.authMain {
     min-width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: pal.$gray3;
+    background-color: pal.$gray6;
 
     .logo {
-        padding: 120px 0 50px 0;
+        margin: 50px 0 50px 0;
     }
 }
 
 .container {
+    width: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 20px;
     border: 1px solid rgba(pal.$gray2, 0.5);
     border-radius: 6px;
     background-color: pal.$white;
+
+    .formContent {
+        width: 100%;
+    }
 }
 
 nav {
-    width: calc(100% + 40px);
+    width: 100%;
 
     .authenticationTabs__navigation {
         list-style: none;
