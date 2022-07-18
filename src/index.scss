@@ -1,119 +1,135 @@
-@use './components/utils/palette.scss' as pal;
+@use "./components/utils/palette.scss" as pal;
 
 /* inter-regular - latin */
 @font-face {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
-    src: local(''),
-        url('./fonts/inter-v11-latin-regular.woff2') format('woff2'),
+    src: local(""), url("./fonts/inter-v11-latin-regular.woff2") format("woff2"),
         /* Chrome 26+, Opera 23+, Firefox 39+ */
-        url('./fonts/inter-v11-latin-regular.woff') format('woff');
+            url("./fonts/inter-v11-latin-regular.woff") format("woff");
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* inter-500 - latin */
 @font-face {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 500;
-    src: local(''),
-        url('./fonts/inter-v11-latin-500.woff2') format('woff2'),
+    src: local(""), url("./fonts/inter-v11-latin-500.woff2") format("woff2"),
         /* Chrome 26+, Opera 23+, Firefox 39+ */
-        url('./fonts/inter-v11-latin-500.woff') format('woff');
+            url("./fonts/inter-v11-latin-500.woff") format("woff");
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* inter-600 - latin */
 @font-face {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 600;
-    src: local(''),
-        url('./fonts/inter-v11-latin-600.woff2') format('woff2'),
+    src: local(""), url("./fonts/inter-v11-latin-600.woff2") format("woff2"),
         /* Chrome 26+, Opera 23+, Firefox 39+ */
-        url('./fonts/inter-v11-latin-600.woff') format('woff');
+            url("./fonts/inter-v11-latin-600.woff") format("woff");
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* inter-700 - latin */
 @font-face {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 700;
-    src: local(''),
-        url('./fonts/inter-v11-latin-700.woff2') format('woff2'),
+    src: local(""), url("./fonts/inter-v11-latin-700.woff2") format("woff2"),
         /* Chrome 26+, Opera 23+, Firefox 39+ */
-        url('./fonts/inter-v11-latin-700.woff') format('woff');
+            url("./fonts/inter-v11-latin-700.woff") format("woff");
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* inter-800 - latin */
 @font-face {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 800;
-    src: local(''),
-        url('./fonts/inter-v11-latin-800.woff2') format('woff2'),
+    src: local(""), url("./fonts/inter-v11-latin-800.woff2") format("woff2"),
         /* Chrome 26+, Opera 23+, Firefox 39+ */
-        url('./fonts/inter-v11-latin-800.woff') format('woff');
+            url("./fonts/inter-v11-latin-800.woff") format("woff");
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 h1 {
-    font: 36pt Inter, sans-serif;
+    font: 36px Inter, sans-serif;
     font-weight: 600;
     color: pal.$gray0;
 }
 
 h2 {
-    font: 32pt 'Inter', sans-serif;
+    font: 32px "Inter", sans-serif;
     font-weight: 500;
     color: pal.$gray0;
 }
 
 h3 {
-    font: 28pt 'Inter', sans-serif;
+    font: 28px "Inter", sans-serif;
     font-weight: 600;
     color: pal.$gray0;
 }
 
 h4 {
-    font: 24pt 'Inter', sans-serif;
+    font: 24px "Inter", sans-serif;
     font-weight: 600;
     color: pal.$gray0;
 }
 
 h5 {
-    font: 18pt 'Inter', sans-serif;
+    font: 18px "Inter", sans-serif;
     font-weight: 600;
     color: pal.$gray0;
 }
 
 h6 {
-    font: 14pt 'Inter', sans-serif;
+    font: 14px "Inter", sans-serif;
     font-weight: 600;
     color: pal.$gray0;
 }
 
-p {
-    font: 16pt 'Inter', sans-serif;
+*,
+p,
+label {
+    font: 16px "Inter", sans-serif;
     font-weight: 500;
-
-    &.small {
-        font-size: 12pt;
-        color: pal.$gray3;
-    }
 }
-
+span {
+    font-size: inherit;
+}
 a {
-    font: 14pt 'Inter', sans-serif;
+    font: 14px "Inter", sans-serif;
     font-weight: 500;
 }
 
-.small {
-    font-size: 12pt;
-    color: pal.$gray3;
+.text-12px {
+    font-size: 12px;
+}
+.text-14px {
+    font-size: 14px;
+}
+
+.text-16px {
+    font-size: 16px;
+}
+
+.text-18px {
+    font-size: 18px;
+}
+
+.slim {
+    font-weight: 400;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.bolder {
+    font-weight: 700;
 }
 
 input {
@@ -124,4 +140,30 @@ input {
     ::-webkit-input-placeholder {
         color: pal.$gray2;
     }
+}
+
+// SCROLLBAR SETTINGS
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track:hover {
+    background-color: pal.$gray6;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: pal.$gray5;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: pal.$gray3;
 }
