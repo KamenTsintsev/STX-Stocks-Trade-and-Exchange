@@ -1,0 +1,45 @@
+@use "./palette.scss" as pal;
+
+.toolBarContainer {
+    height: 30px;
+    max-height: 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 20px;
+
+    color: pal.$gray6;
+    background-color: pal.$primary-1;
+
+    .sort {
+        display: flex;
+        align-items: center;
+
+        .sortLabel {
+            display: inline-block;
+            color: pal.$gray-3;
+        }
+
+        .sortSelect {
+            background-color: pal.$gray6;
+            color: pal.$gray-3;
+            outline: none;
+            border: none;
+            border-radius: 6px;
+
+            &:focus {
+                width: auto;
+                border-radius: 6px 6px 0 0;
+            }
+
+            option {
+                background-color: pal.$gray6;
+                color: pal.$gray-3;
+                outline: none;
+                border: none;
+            }
+        }
+    }
+}
