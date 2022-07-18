@@ -1,5 +1,11 @@
 import "./Buttons.scss";
 
-export default ({ children }) => {
-    return <button className={"button primaryButton"}>{children}</button>;
+const PrimaryButton = ({ cName, type, children }) => {
+    return (
+        <button className={"button primaryButton" + " " + cName} type={type}>
+            {children}
+        </button>
+    );
 };
+
+export default PrimaryButton;
