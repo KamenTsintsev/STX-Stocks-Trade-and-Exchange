@@ -14,26 +14,46 @@
 
 /* Primary button */
 .primaryButton {
-    background-color: pal.$gray3;
-    color: pal.$primary0;
-
-    &:hover {
-        box-shadow: 0px 0px 10px -4px pal.$gray-2;
-    }
-}
-
-.invertedButton {
     background-color: pal.$primary0;
-    color: pal.$gray3;
+    color: pal.$gray6;
 
     &:hover {
         background-color: pal.$primary-1;
-        box-shadow: 0px 0px 10px -4px pal.$gray-1;
+        box-shadow: 0px 0px 10px -4px pal.$gray-2;
+    }
+
+    &.primary1 {
+        background-color: pal.$primary1;
+        color: pal.$gray6;
+
+        &:hover {
+            background-color: pal.$primary0;
+            box-shadow: 0px 0px 10px -4px pal.$gray-2;
+        }
     }
 
     &.secondary {
         background-color: pal.$secondary0;
         color: pal.$gray-3;
+
+        &:hover {
+            background-color: pal.$secondary-1;
+        }
+    }
+}
+
+.invertedButton {
+    color: pal.$primary0;
+    background-color: pal.$gray6;
+
+    &:hover {
+        background-color: pal.$gray4;
+        box-shadow: 0px 0px 10px -4px pal.$gray-1;
+    }
+
+    &.secondary {
+        color: pal.$secondary0;
+        background-color: pal.$gray-2;
 
         &:hover {
             background-color: pal.$secondary-1;
