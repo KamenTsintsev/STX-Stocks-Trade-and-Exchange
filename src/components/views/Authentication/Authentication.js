@@ -8,7 +8,7 @@ import FormRegister from "./FormRegister";
 export default function Authentication() {
     return (
         <main className="authMain">
-            <Logo width={"180px"} fill={"primary0"} className={"logo"}></Logo>
+            <Logo width={"180px"} fill={"primary0"} className={"logo"} />
             <div className="container">
                 <nav>
                     <ul className={"authenticationTabs__navigation"}>
