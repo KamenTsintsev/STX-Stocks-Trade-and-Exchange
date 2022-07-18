@@ -1,15 +1,19 @@
 import "./App.scss";
+import { useState, lazy, Suspense } from "react";
 import { Routes, Route, Link, useLocation, Outlet } from "react-router-dom";
 import Header from "./components/Header/Header";
-import Catalog from "./components/views/Catalog/Catalog";
-import CreateForm from "./components/views/Create/Create";
-import Details from "./components/views/Details/Details";
-import Authentication from "./components/views/Authentication/Authentication";
-import FormLogin from "./components/views/Authentication/FormLogin";
-import FormRegister from "./components/views/Authentication/FormRegister";
+import Logout from "./components/utils/Logout";
+// import { getToken } from "./api/Utils";
+const Catalog = lazy(() => import("./components/views/Catalog/CatalogPage"));
+const Details = lazy(() => import("./components/views/Details/Details"));
+const CreateForm = lazy(() => import("./components/views/Create/Create"));
+const Authentication = lazy(() =>
+    import("./components/views/Authentication/Authentication")
+);
+// const Logout = lazy(() => import("./components/utils/Logout"));
 
 function App() {
-    const Layout = ({ hideHeaderPaths = "" }) => {
+    const HeaderLayout = ({ hideHeaderPaths = "" }) => {
         const { pathname } = useLocation();
 
         return (
@@ -22,29 +26,27 @@ function App() {
 
     return (
         <>
-            {/* <Header></Header> */}
-
+            <HeaderLayout hideHeaderPaths={"/authentication"} />
             <div id="mainContent">
-                <Routes>
-                    <Route
-                        element={<Layout hideHeaderPaths={"/authentication"} />}
-                    >
+                <Suspense>
+                    <Routes>
                         <Route path={"/"} exact element={<Catalog />} />
                         <Route
-                            path={"/create"}
+                            path={"/addItem"}
                             exact
                             element={<CreateForm />}
                         />
                         <Route
                             path="/authentication/*"
                             element={<Authentication />}
-                        >
-                            <Route path="login" element={<FormLogin />} />
-                            <Route path="register" element={<FormRegister />} />
-                        </Route>
-                        <Route path={"/details"} element={<Details />} />
-                    </Route>
-                </Routes>
+                        />
+                        <Route
+                            path={"/details/:itemID"}
+                            element={<Details />}
+                        />
+                        <Route path={"/logout"} element={<Logout />} />
+                    </Routes>
+                </Suspense>
             </div>
         </>
     );
