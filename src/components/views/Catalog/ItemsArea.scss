@@ -1,0 +1,19 @@
+@use "../../utils/palette.scss" as pal;
+
+.itemsAreaContainer {
+    // background-color: pal.$danger3;
+    padding: 10px 15px;
+    overflow-y: auto;
+
+    .resultsText {
+        margin-bottom: 5px;
+    }
+    .itemsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    a {
+        display: contents;
+    }
+}
