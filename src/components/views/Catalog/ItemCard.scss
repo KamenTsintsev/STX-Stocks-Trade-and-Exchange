@@ -1,0 +1,54 @@
+@use "../../utils/palette.scss" as pal;
+
+.itemCard {
+    width: 22%;
+    aspect-ratio: 1/1.5;
+    margin-bottom: 15px;
+    border: 0.8px solid pal.$gray4;
+    border-radius: 6px;
+
+    display: grid;
+    grid-template-areas: "image" "info";
+    grid-template-rows: 65% 35%;
+
+    .imageHolder {
+        grid-area: image;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+        height: 100%;
+        padding: 2px;
+
+        background-color: pal.$gray6;
+        border-bottom: 0.8px solid pal.$gray4;
+
+        .image {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+
+    .info {
+        grid-area: info;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        height: 100%;
+        padding: 15px;
+
+        .priceHolder {
+            text-align: end;
+        }
+    }
+
+    .title {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
