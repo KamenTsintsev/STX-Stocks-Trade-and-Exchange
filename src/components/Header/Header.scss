@@ -27,47 +27,56 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-    }
 
-    .searchBar {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
+        .menuIcon {
+            padding: 20px;
+            max-height: 60px;
+            cursor: pointer;
 
-    .searchField {
-        width: 100%;
-        padding: 10px 35px 10px 15px;
-        max-height: 35px;
-        border: none;
-        border-radius: 6px;
-        outline: none;
-    }
+            &:hover .i {
+                color: pal.$primary3;
 
-    .searchBTN {
-        width: 35px;
-        height: 35px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: pal.$secondary0;
-        border-radius: 0 6px 6px 0;
-        border: none;
-        outline: none;
-        margin-left: -35px;
+            }
+        }
 
+        .searchBar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
 
-        .i {
-            font-size: 12pt;
-            color: pal.$gray-3;
+        .searchField {
+            width: 100%;
+            padding: 10px 35px 10px 15px;
+            max-height: 35px;
+            border: none;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .searchBTN {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: pal.$secondary0;
+            border-radius: 0 6px 6px 0;
+            border: none;
+            outline: none;
+            margin-left: -35px;
+
+            .i {
+                font-size: 16px;
+                color: pal.$gray-3;
+            }
         }
     }
-
 
     .navMenu {
         width: 30%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         list-style: none;
         text-align: center;
@@ -76,9 +85,18 @@
     }
 
     .navLinks {
-        color: pal.$gray3;
-        text-decoration: none;
-        padding: 20px;
+        .i {
+
+            color: pal.$gray6;
+            text-decoration: none;
+            padding: 20px;
+            max-height: 60px;
+
+            &:hover {
+                color: pal.$primary3;
+
+            }
+        }
     }
 
     .favorite {
@@ -88,15 +106,15 @@
 
 
 .i {
-    color: pal.$gray3;
-    font-size: 16pt;
+    color: pal.$gray6;
+    font-size: 20px;
     transition: all .2s ease-in-out;
+    cursor: pointer;
 }
 
 .i:hover {
     color: pal.$primary3;
     border-radius: 4px;
-
 }
 
 .sideMenu {

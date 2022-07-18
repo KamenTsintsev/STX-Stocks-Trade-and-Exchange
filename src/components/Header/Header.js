@@ -4,9 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
 import Dropdown from "./Dropdown";
-import PrimaryButton from "../Buttons/PrimaryButton";
-import UserBtn from "./AccountBtn/UserBtn";
-import GuestBtn from "./AccountBtn/GuestBtn";
+import InvertedButton from "../Buttons/InvertedButton";
+
 import {
     faBars,
     faTimes,
@@ -17,24 +16,29 @@ import {
 import { faHeart as slimHeart } from "@fortawesome/free-regular-svg-icons";
 import logo from "../Images/logo/logo-stx-white-yellow.png";
 
-export default function Header() {
+export default function Header({ token }) {
     const [sideMenuState, setSideMenuState] = useState(false);
     const [dropdown, setDropdown] = useState("");
     const [favorite, setFavorite] = useState(false);
-    const user = localStorage.getItem("user");
+
     const onSideMenuClickHandler = () => setSideMenuState(!sideMenuState);
 
-    const onMouseOver = (e) => {
-        e.currentTarget.className.includes("user")
-            ? setDropdown("active")
-            : setFavorite(true);
+    const onUserMouseOver = (e) => {
+        setDropdown("active");
     };
 
-    const onMouseOut = (e) => {
-        e.currentTarget.className.includes("user")
-            ? setDropdown("inactive")
-            : setFavorite(false);
+    const onUserMouseOut = (e) => {
+        setDropdown("inactive");
     };
+
+    const onFavMouseOver = () => {
+        setFavorite(true);
+    };
+
+    const onFavMouseOut = () => {
+        setFavorite(false);
+    };
+
     return (
         <header className={"header"}>
             <nav className={"navbar"}>
@@ -97,33 +101,33 @@ export default function Header() {
                 <ul className={"navMenu"}>
                     <li
                         className="navItem favorite"
-                        onMouseOver={onMouseOver}
-                        onMouseOut={onMouseOut}
+                        onMouseOver={onFavMouseOver}
+                        onMouseOut={onFavMouseOut}
                     >
                         <Link
                             to={"/favorites"}
-                            className={"navLinks i"}
+                            className={"navLinks"}
                             onClick={() => setSideMenuState(false)}
                         >
                             <FontAwesomeIcon
                                 icon={favorite ? solidHeart : slimHeart}
+                                className={"i"}
                             />
                         </Link>
                     </li>
                     <li
                         className="navItem user"
-                        onMouseOver={onMouseOver}
-                        onMouseOut={onMouseOut}
+                        onMouseOver={onUserMouseOver}
+                        onMouseOut={onUserMouseOut}
                     >
                         <Link
-                            to={user ? "/myItems" : "/authentication/login"}
+                            to={token ? "/myItems" : "/authentication/login"}
                             className={"navLinks i"}
                             onClick={() => setSideMenuState(false)}
                         >
-                            <FontAwesomeIcon icon={faUser} />
+                            <FontAwesomeIcon icon={faUser} className={"i"} />
                         </Link>
                         <Dropdown
-                            user={user}
                             setDropdown={setDropdown}
                             dropdown={dropdown}
                         />
@@ -134,7 +138,7 @@ export default function Header() {
                             className={"navLinks"}
                             onClick={() => setSideMenuState(false)}
                         >
-                            <PrimaryButton>{"Add Item"}</PrimaryButton>
+                            <InvertedButton>{"Add Item"}</InvertedButton>
                         </Link>
                     </li>
                 </ul>
