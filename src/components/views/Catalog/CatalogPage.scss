@@ -1,0 +1,20 @@
+.catalogPageContainer {
+    display: grid;
+    grid-template-areas:
+        "toolbar toolbar"
+        "filters itemsArea";
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 30px calc(100vh - 90px);
+
+    .toolBarContainer {
+        grid-area: toolbar;
+    }
+
+    .filterMenuContainer {
+        grid-area: filters;
+    }
+
+    .itemsAreaContainer {
+        grid-area: itemsArea;
+    }
+}
