@@ -1,4 +1,4 @@
-import { clearTokenItem } from "./Utils";
+import { clearUserData } from "./Utils";
 
 const host = "http://localhost:3030";
 
@@ -22,7 +22,7 @@ async function request(method, url, data) {
         const response = await fetch(host + url, options);
 
         if (response.ok !== true) {
-            response.status == 403 && clearTokenItem();
+            response.status == 403 && clearUserData();
             const error = await response.json();
             throw new Error(error.message);
         }

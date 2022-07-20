@@ -1,4 +1,4 @@
-import { setTokenItem, clearTokenItem } from "./Utils";
+import { setUserData, clearUserData } from "./Utils";
 import { get, post } from "./API";
 const endpoints = {
     myAccount: "/users/me",
@@ -9,19 +9,19 @@ const endpoints = {
 
 export async function login(email, password) {
     const user = await post(endpoints.login, { email, password });
-    setTokenItem(user.accessToken);
-    return user.accessToken;
+    setUserData(user);
+    return user;
 }
 
 export async function register(email, password) {
     const user = await post(endpoints.register, { email, password });
-    setTokenItem(user.accessToken);
-    return user.accessToken;
+    setUserData(user);
+    return user;
 }
 
 export async function logout(token) {
     get(endpoints.logout, null, token);
-    clearTokenItem();
+    clearUserData();
 }
 
 export async function myAccount() {

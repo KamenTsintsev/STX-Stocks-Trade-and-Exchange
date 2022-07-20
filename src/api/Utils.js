@@ -1,15 +1,15 @@
 import { deleteBookById } from "./DataAPI";
 
-export function getToken() {
-    return localStorage.getItem("token");
+export function getUserData() {
+    return JSON.parse(localStorage.getItem("user"));
 }
 
-export function setTokenItem(token) {
-    localStorage.setItem("token", token);
+export function setUserData(user) {
+    localStorage.setItem("user", JSON.stringify(user));
 }
 
-export function clearTokenItem() {
-    localStorage.removeItem("token");
+export function clearUserData() {
+    localStorage.removeItem("user");
 }
 
 export async function deleteBook(ctx) {
