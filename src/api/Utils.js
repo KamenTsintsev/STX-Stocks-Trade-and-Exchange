@@ -4,6 +4,10 @@ export function getUserData() {
     return JSON.parse(localStorage.getItem("user"));
 }
 
+export function isUserLogged() {
+    return Boolean(localStorage.getItem("user"));
+}
+
 export function setUserData(user) {
     localStorage.setItem("user", JSON.stringify(user));
 }
