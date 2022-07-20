@@ -1,5 +1,5 @@
 import "./Header.scss";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
@@ -16,10 +16,14 @@ import {
 import { faHeart as slimHeart } from "@fortawesome/free-regular-svg-icons";
 import Logo from "../utils/Logo";
 
-export default function Header({ token }) {
+import { UserDataContext } from "../../App";
+
+export default function Header() {
     const [sideMenuState, setSideMenuState] = useState(false);
     const [dropdown, setDropdown] = useState("");
     const [favorite, setFavorite] = useState(false);
+
+    const UserData = useContext(UserDataContext);
 
     const onSideMenuClickHandler = () => setSideMenuState(!sideMenuState);
 
@@ -119,7 +123,11 @@ export default function Header({ token }) {
                         onMouseOut={onUserMouseOut}
                     >
                         <Link
-                            to={token ? "/myItems" : "/authentication/login"}
+                            to={
+                                UserData
+                                    ? "/myaccount"
+                                    : "/authentication/login"
+                            }
                             className={"navLinks i"}
                             onClick={() => setSideMenuState(false)}
                         >

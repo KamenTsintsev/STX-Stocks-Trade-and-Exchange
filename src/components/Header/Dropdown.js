@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import { v4 as _idGen } from "uuid";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MenuItems } from "./MenuItems";
+import { UserDataContext } from "../../App";
 
 import "./Dropdown.scss";
 import PrimaryButton from "../Buttons/PrimaryButton";
 
-export default function Dropdown({ token, dropdown, setDropdown }) {
-    if (!token) {
+export default function Dropdown({ dropdown, setDropdown }) {
+    const UserData = useContext(UserDataContext);
+
+    if (!UserData) {
         return (
             <div className={"dropdownMenu" + " " + dropdown}>
                 <Link
