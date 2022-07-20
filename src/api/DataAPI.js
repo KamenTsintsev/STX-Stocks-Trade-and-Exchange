@@ -1,46 +1,46 @@
 import * as api from "./API";
 
 const endpoints = {
-    getAllPets: "/data/pets?sortBy=_createdOn%20desc&distinct=name",
-    createPet: "/data/pets",
-    getPetById: "/data/pets/",
-    editPet: "/data/pets/",
-    deletePet: "/data/pets/",
-    donateToPet: "/data/donation",
-    getPetDonations: (petId) =>
-        `/data/donation?where=petId%3D%22${petId}%22&distinct=_ownerId&count`,
-    isDonated: (petId, userId) =>
-        `/data/donation?where=petId%3D%22${petId}%22%20and%20_ownerId%3D%22${userId}%22&count`,
+    getAllItems: "/data/items?sortBy=_createdOn%20desc",
+    createItem: "/data/items",
+    getItemById: "/data/items/",
+    editItem: "/data/items/",
+    deleteItem: "/data/items/",
+    likeItem: "/data/likes",
+    getItemLikes: (itemId) =>
+        `/data/likes?where=petId%3D%22${itemId}%22&distinct=_ownerId&count`,
+    isItemLiked: (itemId, userId) =>
+        `/data/likes?where=itemId%3D%22${itemId}%22%20and%20_ownerId%3D%22${userId}%22&count`,
 };
 
-export async function getAllPets() {
-    return api.get(endpoints.getAllPets);
+export async function getAllItems() {
+    return await api.get(endpoints.getAllItems);
 }
 
 export async function getById(id) {
-    return api.get(endpoints.getPetById + id);
+    return api.get(endpoints.getItemById + id);
 }
 
-export async function addPet(petData) {
-    return api.post(endpoints.createPet, petData);
+export async function addItem(itemData) {
+    return api.post(endpoints.createItem, itemData);
 }
 
-export async function editPet(id, petData) {
-    return api.put(endpoints.editPet + id, petData);
+export async function editItem(id, itemData) {
+    return api.put(endpoints.editItem + id, itemData);
 }
 
-export async function deletePetById(id) {
-    return api.delete(endpoints.deletePet + id);
+export async function deleteItemById(id) {
+    return api.delete(endpoints.deleteItem + id);
 }
 
-export async function donateToPet(petId) {
-    return api.post(endpoints.donateToPet, petId);
+export async function likeItem(itemId) {
+    return api.post(endpoints.likeItem, itemId);
 }
 
-export async function getPetDonations(petId) {
-    return api.get(endpoints.getPetDonations(petId));
+export async function getItemLikes(itemId) {
+    return api.get(endpoints.getPetDonations(itemId));
 }
 
-export async function isDonatedToPet(petId, userId) {
-    return api.get(endpoints.isDonated(petId, userId));
+export async function isItemLiked(itemId, userId) {
+    return api.get(endpoints.isItemLiked(itemId, userId));
 }
