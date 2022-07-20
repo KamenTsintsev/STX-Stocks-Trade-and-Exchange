@@ -4,20 +4,10 @@ import Logo from "../../utils/Logo";
 import "./Authentication.scss";
 import FormLogin from "./FormLogin";
 import FormRegister from "./FormRegister";
-import { UserDataContext } from "../../../App";
-import { useEffect } from "react";
+// import { UserDataContext } from "../../../App";
+// import { useEffect } from "react";
 
 export default function Authentication() {
-    const UserData = useContext(UserDataContext);
-    console.log(UserData);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (UserData) {
-            return navigate("/myaccount");
-        }
-    }, []);
-
     return (
         <main className="authMain">
             <Logo width={"180px"} fill={"primary0"} className={"logo"} />

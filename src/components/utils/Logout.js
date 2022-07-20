@@ -4,6 +4,7 @@ import * as userAPI from "../../api/UserAPI";
 
 const Logout = () => {
     const navigate = useNavigate();
+
     useEffect(() => {
         const logout = async () => {
             await userAPI.logout();

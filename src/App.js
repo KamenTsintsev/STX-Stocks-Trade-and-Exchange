@@ -1,4 +1,3 @@
-import "./App.scss";
 import {
     useState,
     lazy,
@@ -8,18 +7,21 @@ import {
     useEffect,
 } from "react";
 import { Routes, Route, Link, useLocation, Outlet } from "react-router-dom";
+import "./App.scss";
+import { getUserData, isUserLogged } from "./api/Utils";
+
+import ProtectedRoute from "./components/utils/ProtectedRoute";
+import AuthenticationProtectRoute from "./components/utils/AuthenthicationProtectRoute";
 import Header from "./components/Header/Header";
-import Logout from "./components/utils/Logout";
-import { getUserData } from "./api/Utils";
 const Catalog = lazy(() => import("./components/views/Catalog/CatalogPage"));
 const Details = lazy(() => import("./components/views/Details/Details"));
 const CreateForm = lazy(() => import("./components/views/Create/Create"));
 const Authentication = lazy(() =>
     import("./components/views/Authentication/Authentication")
 );
-// const Logout = lazy(() => import("./components/utils/Logout"));
+const Logout = lazy(() => import("./components/utils/Logout"));
 
-export const UserDataContext = createContext();
+export const UserDataContext = createContext(getUserData());
 
 function App() {
     // const [UserData, setUserData] = useState((getUserData()));
@@ -37,7 +39,6 @@ function App() {
             </>
         );
     };
-
     return (
         <UserDataContext.Provider value={getUserData()}>
             <HeaderLayout hideHeaderPaths={"/authentication"} />
@@ -52,13 +53,29 @@ function App() {
                         />
                         <Route
                             path="/authentication/*"
-                            element={<Authentication />}
+                            element={
+                                <AuthenticationProtectRoute
+                                    user={isUserLogged()}
+                                    path={"/myaccount"}
+                                >
+                                    <Authentication />
+                                </AuthenticationProtectRoute>
+                            }
                         />
                         <Route
                             path={"/details/:itemID"}
                             element={<Details />}
                         />
-                        <Route path={"/logout"} element={<Logout />} />
+                        <Route
+                            element={
+                                <ProtectedRoute
+                                    user={isUserLogged()}
+                                    path={"/"}
+                                />
+                            }
+                        >
+                            <Route path={"/logout"} element={<Logout />} />
+                        </Route>
                     </Routes>
                 </Suspense>
             </div>
