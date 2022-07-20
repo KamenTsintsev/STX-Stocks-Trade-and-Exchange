@@ -14,7 +14,6 @@ async function request(method, url, data) {
     }
 
     const token = getUserData()?.accessToken;
-    console.log(token);
     if (token) {
         options.headers["X-Authorization"] = token;
     }
