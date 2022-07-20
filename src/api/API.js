@@ -1,4 +1,4 @@
-import { clearUserData } from "./Utils";
+import { clearUserData, getUserData } from "./Utils";
 
 const host = "http://localhost:3030";
 
@@ -13,7 +13,8 @@ async function request(method, url, data) {
         options.body = JSON.stringify(data);
     }
 
-    const token = localStorage.getItem("token");
+    const token = getUserData()?.accessToken;
+    console.log(token);
     if (token) {
         options.headers["X-Authorization"] = token;
     }
@@ -22,7 +23,7 @@ async function request(method, url, data) {
         const response = await fetch(host + url, options);
 
         if (response.ok !== true) {
-            response.status == 403 && clearUserData();
+            if (response.status == 403) clearUserData();
             const error = await response.json();
             throw new Error(error.message);
         }

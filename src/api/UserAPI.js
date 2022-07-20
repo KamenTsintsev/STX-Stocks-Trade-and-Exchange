@@ -19,8 +19,8 @@ export async function register(email, password) {
     return user;
 }
 
-export async function logout(token) {
-    get(endpoints.logout, token);
+export async function logout() {
+    get(endpoints.logout);
     clearUserData();
 }
 
