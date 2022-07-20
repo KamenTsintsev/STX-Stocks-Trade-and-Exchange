@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import * as userAPI from "../../../api/UserAPI";
+import * as userAPI from "../../../api/UserAPI";
 import PrimaryButton from "../../Buttons/PrimaryButton";
 import "./Form.scss";
 
@@ -9,17 +10,16 @@ export default function FormLogin() {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const emailHandler = (e) => {
+    const emailChangeHandler = (e) => {
         setEmail(e.target.value);
     };
-    const passwordHandler = (e) => {
+    const passwordChangeHandler = (e) => {
         setPassword(e.target.value);
     };
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-        console.log("email:" + email);
-        console.log("password:" + password);
+        await userAPI.login(email, password);
         navigate("/");
     };
 
@@ -33,7 +33,7 @@ export default function FormLogin() {
                     id="email"
                     placeholder="Email address"
                     value={email}
-                    onChange={emailHandler}
+                    onChange={emailChangeHandler}
                 />
 
                 <label htmlFor="password">Password</label>
@@ -43,7 +43,7 @@ export default function FormLogin() {
                     id="password"
                     placeholder="••••••••"
                     value={password}
-                    onChange={passwordHandler}
+                    onChange={passwordChangeHandler}
                 />
 
                 <PrimaryButton cName={"primary1"} type={"submit"}>

@@ -1,27 +1,34 @@
-import React, { useState } from "react";
-// import { useParams } from "react-router-dom";
-import ImageCard from "./ImageCard";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { v4 as uniqueID } from "uuid";
+import * as dataApi from "../../../api/DataAPI";
+
 import PrimaryButton from "../../Buttons/PrimaryButton";
+import AddFavorite from "../../utils/AddFavorite";
+import ImageCard from "./ImageCard";
 import "./Details.scss";
 
 export default function Details() {
-    // const { itemID } = useParams();
-    const itemData = {
-        title: "Wyze Cam v3 with Color Night Vision, Wired 1080p HD Indoor/Outdoor Video Camera, 2-Way Audio, Works with Alexa, Google Assistant, and IFTTT",
-        description:
-            "Color night vision: An all-new Starlight Sensor records night time video in full, vivid color. The Starlight Sensor can see full color in environments up to 25x darker than traditional video cameras and the new f/1.6 aperture captures 2x more light. Indoor/ Outdoor: Wyze Cam v3 is a wired video camera with an IP65 rating so you can confidently install it outside in the rain or inside in the kids' room.Wyze Outdoor Power Adapter(sold separately) required for outdoor use.Phone Compatibility - Android 5.0 +, iOS 9.0 +. Motion & Sound detection: Wyze Cam records video when motion or sound is detected and sends an alert straight to your phone.Motion Detection Zones and custom settings allow you to adjust the sensitivity of detection or turn it off completely. 24 / 7 Continuous Recording: Continuous video recording with a 32GB MicroSD card(sold separately).Just insert the MicroSD into the base of the Wyze Cam and you're all set. IFTTT certified connect all of your different apps and devices.When you sign up for a free account, you can enable your apps and devices to work together.",
-        price: 35.98,
-        imageArr: [
-            require("../../../Images/products/chopper/4.jpg"),
-            "https://i.pinimg.com/736x/69/82/7f/69827f4b51b0d827e82cb785808f1d87--amazing-cars-muscle.jpg",
-            "http://www.stancenation.com/wp-content/uploads/2014/08/Stanced-Bagged-Nissan-350Z-1.jpg",
-            "http://www.stancenation.com/wp-content/uploads/2014/08/Stanced-Bagged-Nissan-350Z-4.jpg",
-        ],
-        category: "electronics",
-        available: true,
-    };
-    const [currentImage, setCurrentImage] = useState(itemData.imageArr[0]);
-    const [active, setActive] = useState(itemData.imageArr[0]);
+    const { itemID } = useParams();
+    const images = [
+        require("../../../Images/products/nissan350z/1.jpg"),
+        require("../../../Images/products/nissan350z/2.jpg"),
+        require("../../../Images/products/nissan350z/3.jpg"),
+        require("../../../Images/products/nissan350z/4.jpg"),
+        require("../../../Images/products/nissan350z/5.jpg"),
+    ];
+    const [itemData, setItemData] = useState("");
+    const [currentImage, setCurrentImage] = useState(images[0]);
+    const [active, setActive] = useState(images[0]);
+
+    useEffect(() => {
+        const getItem = async () => {
+            const itemRes = await dataApi.getById(itemID);
+            setItemData(itemRes);
+        };
+
+        getItem();
+    }, [itemID]);
 
     const onMouseOverImageHangler = (e) => {
         // NEED TO FIX THIS BS ASAP!!!
@@ -31,14 +38,15 @@ export default function Details() {
     const activeCardHoverHandler = (value) => {
         active !== value && setActive(value);
     };
-    const arr = [];
+    // const arr = [];
     return (
         <div className="productDetailsContainer">
             <div className="productDetails">
+                {/* Gallery Container */}
                 <div className="galleryContainer">
                     <div className="sticky">
                         <ul className="gallery">
-                            {itemData.imageArr.map((imgUrl) => (
+                            {images.map((imgUrl) => (
                                 <ImageCard
                                     key={imgUrl}
                                     image={imgUrl}
@@ -57,14 +65,23 @@ export default function Details() {
                         </div>
                     </div>
                 </div>
+                {/* Description Container */}
                 <div className="description">
                     <h2 className="title">{itemData.title}</h2>
                     <h3 className="price">Price: ${itemData.price}</h3>
-                    <p className="desc">{itemData.description}</p>
+                    <ul className="desc">
+                        {itemData.description?.split(" ** ").map((x) => {
+                            return <li key={uniqueID()}>{x}</li>;
+                        })}
+                    </ul>
                 </div>
+                {/* Order container */}
                 <div className="orderNowContainer">
                     <div className="orderNow">
-                        <h3 className="bolder">${itemData.price}</h3>
+                        <header className={"orderHeader"}>
+                            <h3 className="bolder">${itemData.price}</h3>
+                            <AddFavorite></AddFavorite>
+                        </header>
                         <p className="slim text-12px">
                             The product will be delivered from{" "}
                             <span className="bold">3</span> to{" "}
@@ -76,6 +93,7 @@ export default function Details() {
                     </div>
                 </div>
             </div>
+            {/* Filler */}
             <div className="moreItems">
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
