@@ -1,9 +1,16 @@
 import "./App.scss";
-import { useState, lazy, Suspense } from "react";
+import {
+    useState,
+    lazy,
+    Suspense,
+    createContext,
+    useContext,
+    useEffect,
+} from "react";
 import { Routes, Route, Link, useLocation, Outlet } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Logout from "./components/utils/Logout";
-// import { getToken } from "./api/Utils";
+import { getUserData } from "./api/Utils";
 const Catalog = lazy(() => import("./components/views/Catalog/CatalogPage"));
 const Details = lazy(() => import("./components/views/Details/Details"));
 const CreateForm = lazy(() => import("./components/views/Create/Create"));
@@ -12,7 +19,14 @@ const Authentication = lazy(() =>
 );
 // const Logout = lazy(() => import("./components/utils/Logout"));
 
+export const UserDataContext = createContext();
+
 function App() {
+    // const [UserData, setUserData] = useState((getUserData()));
+    // useEffect(() => {
+    //     setUserData(JSON.parse(getUserData()));
+    // }, []);
+
     const HeaderLayout = ({ hideHeaderPaths = "" }) => {
         const { pathname } = useLocation();
 
@@ -25,7 +39,7 @@ function App() {
     };
 
     return (
-        <>
+        <UserDataContext.Provider value={getUserData()}>
             <HeaderLayout hideHeaderPaths={"/authentication"} />
             <div id="mainContent">
                 <Suspense>
@@ -48,7 +62,7 @@ function App() {
                     </Routes>
                 </Suspense>
             </div>
-        </>
+        </UserDataContext.Provider>
     );
 }
 
