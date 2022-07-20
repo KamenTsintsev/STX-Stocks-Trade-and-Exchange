@@ -1549,7 +1549,7 @@
     const importedData = require("./data");
     var seedData = {
         items: importedData,
-        likes: {},
+        favorites: {},
     };
     var rules$1 = {
         users: {

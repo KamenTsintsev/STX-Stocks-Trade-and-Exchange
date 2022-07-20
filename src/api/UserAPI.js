@@ -20,7 +20,7 @@ export async function register(email, password) {
 }
 
 export async function logout(token) {
-    get(endpoints.logout, null, token);
+    get(endpoints.logout, token);
     clearUserData();
 }
 
