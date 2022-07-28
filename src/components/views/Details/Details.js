@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { v4 as uniqueID } from "uuid";
 import * as dataApi from "../../../api/DataAPI";
@@ -8,16 +8,19 @@ import AddFavorite from "../../utils/AddFavorite";
 import ImageCard from "./ImageCard";
 import "./Details.scss";
 
+import AuthContext from "../../../contexts/authenticationContext";
+
 export default function Details() {
     const { itemID } = useParams();
     const images = [
-        require("../../../Images/products/nissan350z/1.jpg"),
-        require("../../../Images/products/nissan350z/2.jpg"),
-        require("../../../Images/products/nissan350z/3.jpg"),
-        require("../../../Images/products/nissan350z/4.jpg"),
-        require("../../../Images/products/nissan350z/5.jpg"),
+        require("../../../images/products/nissan350z/1.jpg"),
+        require("../../../images/products/nissan350z/2.jpg"),
+        require("../../../images/products/nissan350z/3.jpg"),
+        require("../../../images/products/nissan350z/4.jpg"),
+        require("../../../images/products/nissan350z/5.jpg"),
     ];
     const [itemData, setItemData] = useState("");
+    const [_ownerID, set_OwnerID] = useState("");
     const [currentImage, setCurrentImage] = useState(images[0]);
     const [active, setActive] = useState(images[0]);
 
@@ -25,6 +28,7 @@ export default function Details() {
         const getItem = async () => {
             const itemRes = await dataApi.getById(itemID);
             setItemData(itemRes);
+            set_OwnerID(itemRes._ownerId);
         };
 
         getItem();
@@ -80,7 +84,10 @@ export default function Details() {
                     <div className="orderNow">
                         <header className={"orderHeader"}>
                             <h3 className="bolder">${itemData.price}</h3>
-                            <AddFavorite></AddFavorite>
+                            <AddFavorite
+                                itemID={itemID}
+                                _ownerID={_ownerID}
+                            ></AddFavorite>
                         </header>
                         <p className="slim text-12px">
                             The product will be delivered from{" "}
