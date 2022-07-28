@@ -1549,7 +1549,13 @@
     const importedData = require("./data");
     var seedData = {
         items: importedData,
-        favorites: {},
+        favorites: {
+            "3dd6338b-e5d3-4bc6-b3ea-c3e4b59cdb8b": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                itemId: "acb70848-c67c-479f-aafc-f717887dc34c",
+                _createdOn: 1658339143363,
+            },
+        },
     };
     var rules$1 = {
         users: {
