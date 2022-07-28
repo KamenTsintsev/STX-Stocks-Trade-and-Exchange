@@ -42,13 +42,13 @@ export const AuthContextProvider = (props) => {
                     setIsLoggedIn(true);
                 }
             } catch (err) {
-                if (token) {
-                    logout();
-                }
                 setUserData("");
                 setInitialState("");
                 setToken("");
                 setUserId("");
+                if (token) {
+                    logout();
+                }
                 navigate("/authentication/login");
             }
         }
