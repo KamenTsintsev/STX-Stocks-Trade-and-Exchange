@@ -16,14 +16,14 @@ import {
 import { faHeart as slimHeart } from "@fortawesome/free-regular-svg-icons";
 import Logo from "../utils/Logo";
 
-import { UserDataContext } from "../../App";
+import AuthContext from "../../contexts/authenticationContext";
 
 export default function Header() {
     const [sideMenuState, setSideMenuState] = useState(false);
     const [dropdown, setDropdown] = useState("");
     const [favorite, setFavorite] = useState(false);
 
-    const UserData = useContext(UserDataContext);
+    const isUserLoggedIn = useContext(AuthContext).isLoggedIn;
 
     const onSideMenuClickHandler = () => setSideMenuState(!sideMenuState);
 
@@ -124,7 +124,7 @@ export default function Header() {
                     >
                         <Link
                             to={
-                                UserData
+                                isUserLoggedIn
                                     ? "/myaccount"
                                     : "/authentication/login"
                             }

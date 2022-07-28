@@ -1,11 +1,8 @@
-import { useContext } from "react";
 import { Routes, Route, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../utils/Logo";
 import "./Authentication.scss";
 import FormLogin from "./FormLogin";
 import FormRegister from "./FormRegister";
-// import { UserDataContext } from "../../../App";
-// import { useEffect } from "react";
 
 export default function Authentication() {
     return (

@@ -1,15 +1,17 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MenuItems } from "./MenuItems";
-import { UserDataContext } from "../../App";
+import AuthContext from "../../contexts/authenticationContext";
 
 import "./Dropdown.scss";
 import PrimaryButton from "../Buttons/PrimaryButton";
 
 export default function Dropdown({ dropdown, setDropdown }) {
-    const UserData = useContext(UserDataContext);
+    const context = useContext(AuthContext);
+    const isLoggedIn = context.isLoggedIn;
+    console.log(isLoggedIn);
 
-    if (!UserData) {
+    if (!isLoggedIn) {
         return (
             <div className={"dropdownMenu" + " " + dropdown}>
                 <Link
@@ -39,7 +41,10 @@ export default function Dropdown({ dropdown, setDropdown }) {
             <div className={"dropdownMenu" + " " + dropdown}>
                 <Link
                     to={"/logout"}
-                    onClick={() => setDropdown("")}
+                    onClick={() => {
+                        setDropdown("");
+                        //setIsUserLogged(false);
+                    }}
                     className={"small"}
                 >
                     Logout

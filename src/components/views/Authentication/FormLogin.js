@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as userAPI from "../../../api/UserAPI";
 import PrimaryButton from "../../Buttons/PrimaryButton";
+import AuthContext from "../../../contexts/authenticationContext";
+
 import "./Form.scss";
 
 export default function FormLogin() {
+    const userContext = useContext(AuthContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -19,8 +20,8 @@ export default function FormLogin() {
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-        await userAPI.login(email, password);
-        navigate("/");
+        userContext.login(email, password);
+        navigate(-1);
     };
 
     return (

@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PrimaryButton from "../../Buttons/PrimaryButton";
+import AuthContext from "../../../contexts/authenticationContext";
+
 import "./Form.scss";
 
 export default function FormRegister() {
+    const userContext = useContext(AuthContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [rePass, setRePass] = useState("");
@@ -21,9 +24,12 @@ export default function FormRegister() {
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-        console.log("email:" + email);
-        console.log("password:" + password);
-        navigate("/");
+        if (password !== rePass) {
+            throw new Error("Passwords don't match!");
+        }
+        userContext.register(email, password);
+
+        navigate(-1);
     };
     return (
         <div className="formContainer">
