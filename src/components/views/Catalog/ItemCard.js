@@ -8,9 +8,9 @@ export default function ItemCard({ item }) {
     useEffect(() => {
         const imgReq = async () => {
             const img = await import(
-                "../../../Images/products/nissan350z/1.jpg"
+                "../../../images/products/nissan350z/1.jpg"
                 // baseImgURL + item.imageArr[0]
-                // "C:/Kamen/Softuni-Program/FrontEnd - JS/REACT - JS/exam-project/src/Images/products/nissan350z/2.jpg"
+                // "C:/Kamen/Softuni-Program/FrontEnd - JS/REACT - JS/exam-project/src/images/products/nissan350z/2.jpg"
             );
             setCoverImg(img.default);
         };
