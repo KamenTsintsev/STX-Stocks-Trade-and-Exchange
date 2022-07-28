@@ -1,0 +1,38 @@
+@use "./palette.scss" as pal;
+
+.favIconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    border: 2px solid pal.$gray5;
+    border-radius: 6px;
+    padding: 2px;
+
+    .i {
+        color: pal.$gray5;
+    }
+
+    &:hover {
+        border: 2px solid pal.$gray3;
+        .i {
+            color: pal.$gray3;
+        }
+    }
+
+    &.favorite {
+        border: 2px solid pal.$secondary0;
+
+        .i {
+            color: pal.$secondary0;
+        }
+
+        &:hover {
+            border: 2px solid pal.$secondary-1;
+            .i {
+                color: pal.$secondary-1;
+            }
+        }
+    }
+}
