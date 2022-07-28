@@ -20,13 +20,12 @@ export async function register(email, password) {
 }
 
 export async function logout() {
-    get(endpoints.logout);
+    await get(endpoints.logout);
     clearUserData();
 }
 
 export async function myAccount() {
-    const userData = await get(endpoints.myAccount);
-    return userData;
+    return await get(endpoints.myAccount);
 }
 
 // export { login, register, logout };

@@ -7,8 +7,9 @@ const endpoints = {
     editItem: "/data/items/",
     deleteItem: "/data/items/",
     addItemToFavorite: "/data/favorites",
-    isItemFavorite: (itemId, userId) =>
-        `/data/likes?where=itemId%3D%22${itemId}%22%20and%20_ownerId%3D%22${userId}%22&count`,
+    removeFavoriteItem: (favId) => `/data/favorites/${favId}`,
+    isItemFavorite: (itemId, _ownerId) =>
+        `/data/favorites?where=itemId%3D%22${itemId}%22%20and%20_ownerId%3D%22${_ownerId}%22`,
 };
 
 export async function getAllItems() {
@@ -16,25 +17,33 @@ export async function getAllItems() {
 }
 
 export async function getById(id) {
-    return api.get(endpoints.getItemById + id);
+    return await api.get(endpoints.getItemById + id);
 }
 
 export async function addItem(itemData) {
-    return api.post(endpoints.createItem, itemData);
+    return await api.post(endpoints.createItem, itemData);
 }
 
 export async function editItem(id, itemData) {
-    return api.put(endpoints.editItem + id, itemData);
+    return await api.put(endpoints.editItem + id, itemData);
 }
 
 export async function deleteItemById(id) {
-    return api.delete(endpoints.deleteItem + id);
+    return await api.delete(endpoints.deleteItem + id);
 }
 
 export async function addItemToFavorite(itemId) {
-    return api.post(endpoints.addItemToFavorite, itemId);
+    return await api.post(endpoints.addItemToFavorite, { itemId });
 }
+
+// export async function getFavoriteItems(itemId, _ownerId) {
+//     return api.get(endpoints.isItemFavorite(itemId, _ownerId));
+// }
 
 export async function isItemFavorite(itemId, userId) {
     return api.get(endpoints.isItemFavorite(itemId, userId));
+}
+
+export async function removeFavoriteItem(favId) {
+    return api.delete(endpoints.removeFavoriteItem(favId));
 }

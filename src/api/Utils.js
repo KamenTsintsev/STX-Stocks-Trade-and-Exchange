@@ -4,7 +4,7 @@ export function getUserData() {
     return JSON.parse(localStorage.getItem("user"));
 }
 
-export function isUserLogged() {
+export function getIsUserLogged() {
     return Boolean(localStorage.getItem("user"));
 }
 
