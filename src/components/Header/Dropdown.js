@@ -7,9 +7,8 @@ import "./Dropdown.scss";
 import PrimaryButton from "../Buttons/PrimaryButton";
 
 export default function Dropdown({ dropdown, setDropdown }) {
-    const context = useContext(AuthContext);
-    const isLoggedIn = context.isLoggedIn;
-    console.log(isLoggedIn);
+    const userContext = useContext(AuthContext);
+    const isLoggedIn = userContext.isLoggedIn;
 
     if (!isLoggedIn) {
         return (
