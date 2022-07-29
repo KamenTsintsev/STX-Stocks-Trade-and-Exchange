@@ -1,8 +1,9 @@
 import { useEffect, useState, useContext } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as dataApi from "../../api/DataAPI";
 import { getIsUserLogged } from "../../api/Utils";
 import AuthContext from "../../contexts/authenticationContext";
+import LocationContext from "../../contexts/locationContext";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
@@ -18,6 +19,7 @@ const AddFavorite = ({ itemID }) => {
     const isUserLogged = getIsUserLogged();
 
     const userId = useContext(AuthContext)?._id;
+    const { lastLocation, setLastLocation } = useContext(LocationContext);
 
     useEffect(() => {
         if (userId) {
@@ -41,6 +43,8 @@ const AddFavorite = ({ itemID }) => {
 
     const onFavoriteClickHandler = async () => {
         if (!isUserLogged) {
+            setLastLocation();
+
             return navigate("../authentication/login");
         }
 
