@@ -20,8 +20,14 @@ export async function register(email, password) {
 }
 
 export async function logout() {
-    await get(endpoints.logout);
-    clearUserData();
+    try {
+        await get(endpoints.logout);
+
+        clearUserData();
+    } catch (error) {
+        clearUserData();
+        throw error;
+    }
 }
 
 export async function myAccount() {
