@@ -6,12 +6,15 @@ import reportWebVitals from "./reportWebVitals";
 import "./reset.scss";
 import "./index.scss";
 import { AuthContextProvider } from "./contexts/authenticationContext";
+import { LastLocationProvider } from "./contexts/locationContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <BrowserRouter>
         <AuthContextProvider>
-            <App />
+            <LastLocationProvider>
+                <App />
+            </LastLocationProvider>
         </AuthContextProvider>
     </BrowserRouter>
 );
