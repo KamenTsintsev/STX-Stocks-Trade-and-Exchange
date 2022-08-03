@@ -25,7 +25,7 @@ export default function FormLogin() {
     };
 
     return (
-        <div className="formContainer">
+        <div className="loginFormContainer">
             <form action="post" className="form" onSubmit={onSubmitHandler}>
                 <label htmlFor="email">Email</label>
                 <input

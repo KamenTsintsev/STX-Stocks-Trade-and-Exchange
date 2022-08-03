@@ -1,6 +1,7 @@
-@use '../../utils/palette.scss' as pal;
+@use "../../utils/palette.scss" as pal;
 
-.formContainer {
+.loginFormContainer,
+.registerFormContainer {
     margin: 30px;
 
     .form {

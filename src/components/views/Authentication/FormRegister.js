@@ -32,7 +32,7 @@ export default function FormRegister() {
         navigate(-1);
     };
     return (
-        <div className="formContainer">
+        <div className="registerFormContainer">
             <form action="post" className="form" onSubmit={onSubmitHandler}>
                 <label htmlFor="email">Email</label>
                 <input
