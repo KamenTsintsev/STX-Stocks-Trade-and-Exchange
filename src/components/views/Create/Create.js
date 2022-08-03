@@ -1,30 +1,124 @@
-export default function CreateForm() {
+import { useState, useEffect } from "react";
+import * as dataApi from "../../../api/DataAPI";
+
+import TitleSection from "./TitleSection";
+import ImagesSection from "./ImagesSection";
+import DescriptionSection from "./DescriptionSection";
+import PriceSection from "./PriceSection";
+import PrimaryButton from "../../Buttons/PrimaryButton";
+
+import "./Create.scss";
+import { Navigate, useNavigate } from "react-router-dom";
+
+export default function CreateForm({ product }) {
+    const navigate = useNavigate();
+    const [productData, setProductData] = useState({
+        title: "",
+        category: "default",
+        images: [],
+        description: "",
+        price: "",
+        delivery: "buyer",
+        condition: "new",
+    });
+    const [errors, setErrors] = useState({
+        title: true,
+        category: true,
+        images: true,
+        description: true,
+        price: true,
+    });
+    // const galleryRef = useRef();
+
+    useEffect(() => {
+        // const propsProductKeysLength = Object.keys(product).length || "";
+        if (-1 > 0) {
+            setProductData({
+                _id: product._id,
+                title: product.title,
+                category: product.category,
+                images: product.images,
+                description: product.description,
+                price: product.price,
+                quality: product.quality,
+                featuredProduct: product.featuredProduct,
+            });
+        }
+    }, [product]);
+
+    const onFormSubmit = async (e) => {
+        e.preventDefault();
+        console.log();
+        if (!Object.values(errors).includes(true)) {
+            await dataApi.createNewItem(productData);
+            setProductData({
+                title: "",
+                category: "default",
+                images: [],
+                description: "",
+                price: "",
+                delivery: "buyer",
+                condition: "new",
+            });
+        } else {
+            alert("please fill in all the highlighted fields");
+        }
+    };
+
+    const onCancelClick = (e) => {
+        let confirm = window.confirm("Please enter your name");
+        // console.log("Not working properly for now. Building in process.");
+        if (confirm) {
+            setProductData({
+                title: "",
+                category: "default",
+                images: [],
+                description: "",
+                price: "",
+                delivery: "buyer",
+                condition: "new",
+            });
+            navigate("/");
+        }
+    };
 
     return (
-        <section>
-            <form action="#">
-                <label htmlFor="name">Product Name:</label>
-                <input id="name" type="text" placeholder="ex: Apple MacBook Air 256GB" />
-                <label htmlFor="category">Product Category:</label>
-                <select name="category" id="category">
-                    <option value="#">Select category</option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value="">Garden</option>
-                </select>
-                <label htmlFor="quality">Product Quality:</label>
-                <div>
-                    <label htmlFor="quality">Product Quality:</label>
-                    <input id="New" type="radio" name="quality" value="New" checked />
-                    <label htmlFor="quality">Product Quality:</label>
-                    <input id="Used" type="radio" name="quality" value="Used" />
-                    <label htmlFor="quality">Product Quality:</label>
-                    <input id="Trash" type="radio" name="quality" value="Trash" />
+        <section className="formContainer">
+            <form action="#" onSubmit={onFormSubmit} className={"form"}>
+                <h1>Add Product</h1>
+                <TitleSection
+                    productData={productData}
+                    setProductData={setProductData}
+                    errors={errors}
+                    setErrors={setErrors}
+                />
+                <ImagesSection
+                    productData={productData}
+                    setProductData={setProductData}
+                    errors={errors}
+                    setErrors={setErrors}
+                />
+                <DescriptionSection
+                    productData={productData}
+                    setProductData={setProductData}
+                    errors={errors}
+                    setErrors={setErrors}
+                />
+                <PriceSection
+                    productData={productData}
+                    setProductData={setProductData}
+                    errors={errors}
+                    setErrors={setErrors}
+                />
+                <div className="section button">
+                    <PrimaryButton type={"submit"}>
+                        {"Add new product"}
+                    </PrimaryButton>
+                    <p className="text-16px danger" onClick={onCancelClick}>
+                        Cancel
+                    </p>
                 </div>
-
-
-
             </form>
         </section>
-    )
+    );
 }
