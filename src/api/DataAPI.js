@@ -20,11 +20,11 @@ export async function getById(id) {
     return await api.get(endpoints.getItemById + id);
 }
 
-export async function addItem(itemData) {
+export async function createNewItem(itemData) {
     return await api.post(endpoints.createItem, itemData);
 }
 
-export async function editItem(id, itemData) {
+export async function editExistingItem(id, itemData) {
     return await api.put(endpoints.editItem + id, itemData);
 }
 
