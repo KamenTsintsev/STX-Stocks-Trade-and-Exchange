@@ -142,6 +142,16 @@ input {
     }
 }
 
+.success {
+    color: pal.$success0;
+}
+.warning {
+    color: pal.$warning0;
+}
+.danger {
+    color: pal.$danger0;
+}
+
 // SCROLLBAR SETTINGS
 /* width */
 ::-webkit-scrollbar {
