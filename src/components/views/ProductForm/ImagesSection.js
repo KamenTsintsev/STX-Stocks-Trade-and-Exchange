@@ -57,7 +57,9 @@ const ImagesSection = ({ productData, setProductData, errors, setErrors }) => {
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
 
-                const currentImage = [file.name, file];
+                const base64Img = await getBase64(file);
+
+                const currentImage = [file.name, base64Img];
                 imgArr.push(currentImage);
             }
             // for now I will only use the input files, without saving the previous ones
@@ -74,6 +76,15 @@ const ImagesSection = ({ productData, setProductData, errors, setErrors }) => {
             e.target.files = {};
         }
     };
+
+    function getBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = (error) => reject(error);
+        });
+    }
 
     return (
         <section className="imagesSectionContainer section">
