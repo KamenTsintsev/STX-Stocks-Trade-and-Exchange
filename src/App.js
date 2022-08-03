@@ -8,7 +8,9 @@ import AuthContext from "./contexts/authenticationContext";
 const ProtectedRoute = lazy(() => import("./components/utils/ProtectedRoute"));
 const Catalog = lazy(() => import("./components/views/Catalog/CatalogPage"));
 const Details = lazy(() => import("./components/views/Details/Details"));
-const CreateForm = lazy(() => import("./components/views/Create/Create"));
+const ProductForm = lazy(() =>
+    import("./components/views/ProductForm/ProductForm")
+);
 const Authentication = lazy(() =>
     import("./components/views/Authentication/Authentication")
 );
@@ -55,7 +57,7 @@ function App() {
                                     isUserLogged={!isUserLoggedIn}
                                     redirectPath={"/authentication/login"}
                                 >
-                                    <CreateForm />
+                                    <ProductForm />
                                 </ProtectedRoute>
                             }
                         />
