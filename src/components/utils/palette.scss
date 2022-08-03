@@ -42,23 +42,23 @@ $danger-1: #c2172f;
 $danger-2: #ae1127;
 $danger-3: #8a0013;
 
-// Neutral/Warning
-$neutral3: #ffb7a0;
-$neutral2: #ff9675;
-$neutral1: #f08462;
-$neutral0: #e9724c;
-$neutral-1: #df6037;
-$neutral-2: #d84e22;
-$neutral-3: #a63510;
+// Warning
+$warning3: #ffb7a0;
+$warning2: #ff9675;
+$warning1: #f08462;
+$warning0: #e9724c;
+$warning-1: #df6037;
+$warning-2: #d84e22;
+$warning-3: #a63510;
 
-// Positive/Success
-$positive3: #a1f9cc;
-$positive2: #53d995;
-$positive1: #2ad07c;
-$positive0: #00cc64;
-$positive-1: #00a652;
-$positive-2: #00813f;
-$positive-3: #00572b;
+// Success
+$success3: #a1f9cc;
+$success2: #53d995;
+$success1: #2ad07c;
+$success0: #00cc64;
+$success-1: #00a652;
+$success-2: #00813f;
+$success-3: #00572b;
 
 :export {
     // Grays
@@ -105,23 +105,23 @@ $positive-3: #00572b;
     danger-2: $danger-2;
     danger-3: $danger-3;
 
-    // Neutral/Warning
-    neutral3: $neutral3;
-    neutral2: $neutral2;
-    neutral1: $neutral1;
-    neutral0: $neutral0;
-    neutral-1: $neutral-1;
-    neutral-2: $neutral-2;
-    neutral-3: $neutral-3;
+    // Warning
+    warning3: $warning3;
+    warning2: $warning2;
+    warning1: $warning1;
+    warning0: $warning0;
+    warning-1: $warning-1;
+    warning-2: $warning-2;
+    warning-3: $warning-3;
 
-    // Positive/Success
-    positive3: $positive3;
-    positive2: $positive2;
-    positive1: $positive1;
-    positive0: $positive0;
-    positive-1: $positive-1;
-    positive-2: $positive-2;
-    positive-3: $positive-3;
+    // Success
+    success3: $success3;
+    success2: $success2;
+    success1: $success1;
+    success0: $success0;
+    success-1: $success-1;
+    success-2: $success-2;
+    success-3: $success-3;
 }
 
 // $danger: #BF1A2F;
