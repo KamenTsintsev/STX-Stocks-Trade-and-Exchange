@@ -7,10 +7,10 @@ import DescriptionSection from "./DescriptionSection";
 import PriceSection from "./PriceSection";
 import PrimaryButton from "../../Buttons/PrimaryButton";
 
-import "./Create.scss";
-import { Navigate, useNavigate } from "react-router-dom";
+import "./ProductForm.scss";
+import { useNavigate } from "react-router-dom";
 
-export default function CreateForm({ product }) {
+export default function ProductForm({ product }) {
     const navigate = useNavigate();
     const [productData, setProductData] = useState({
         title: "",
@@ -48,7 +48,6 @@ export default function CreateForm({ product }) {
 
     const onFormSubmit = async (e) => {
         e.preventDefault();
-        console.log();
         if (!Object.values(errors).includes(true)) {
             await dataApi.createNewItem(productData);
             setProductData({
@@ -60,6 +59,7 @@ export default function CreateForm({ product }) {
                 delivery: "buyer",
                 condition: "new",
             });
+            navigate("/");
         } else {
             alert("please fill in all the highlighted fields");
         }
