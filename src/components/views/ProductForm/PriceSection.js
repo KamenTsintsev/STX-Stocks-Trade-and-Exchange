@@ -49,7 +49,7 @@ const PriceSection = ({ productData, setProductData, errors, setErrors }) => {
                         type="number"
                         name="price"
                         id="price"
-                        placeholder="ex: The phone has little scratch, but otherwise is in perfect shape..."
+                        placeholder="ex: 799.99"
                         className={priceError ? "inputError" : ""}
                         value={productData.price}
                         onChange={onInputChangeHandler}
