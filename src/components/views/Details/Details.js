@@ -12,60 +12,51 @@ import AuthContext from "../../../contexts/authenticationContext";
 
 export default function Details() {
     const { itemID } = useParams();
-    const images = [
-        require("../../../images/products/nissan350z/1.jpg"),
-        require("../../../images/products/nissan350z/2.jpg"),
-        require("../../../images/products/nissan350z/3.jpg"),
-        require("../../../images/products/nissan350z/4.jpg"),
-        require("../../../images/products/nissan350z/5.jpg"),
-    ];
     const [itemData, setItemData] = useState("");
     const [_ownerID, set_OwnerID] = useState("");
-    const [currentImage, setCurrentImage] = useState(images[0]);
-    const [active, setActive] = useState(images[0]);
+    const [images, setImages] = useState([]);
+    const [active, setActive] = useState("");
 
     useEffect(() => {
         const getItem = async () => {
             const itemRes = await dataApi.getById(itemID);
             setItemData(itemRes);
             set_OwnerID(itemRes._ownerId);
+            setImages(itemRes.images);
+            setActive(itemRes.images[0]);
         };
 
         getItem();
     }, [itemID]);
 
-    const onMouseOverImageHangler = (e) => {
-        // NEED TO FIX THIS BS ASAP!!!
-        const img = e.currentTarget.querySelector("img").src;
-        setCurrentImage(img);
-    };
     const activeCardHoverHandler = (value) => {
         active !== value && setActive(value);
     };
-    // const arr = [];
+
+    let imageCards;
+
+    if (images) {
+        imageCards = images.map((imgData) => {
+            // console.log(imgData);
+            return (
+                <ImageCard
+                    key={imgData[0]}
+                    imageData={imgData}
+                    active={active}
+                    activeCardHoverHandler={activeCardHoverHandler}
+                />
+            );
+        });
+    }
     return (
         <div className="productDetailsContainer">
             <div className="productDetails">
                 {/* Gallery Container */}
                 <div className="galleryContainer">
                     <div className="sticky">
-                        <ul className="gallery">
-                            {images.map((imgUrl) => (
-                                <ImageCard
-                                    key={imgUrl}
-                                    image={imgUrl}
-                                    onMouseOverImageHangler={
-                                        onMouseOverImageHangler
-                                    }
-                                    activeCardHoverHandler={
-                                        activeCardHoverHandler
-                                    }
-                                    active={active}
-                                />
-                            ))}
-                        </ul>
+                        <ul className="gallery">{imageCards || ""}</ul>
                         <div className="currentImage">
-                            <img src={currentImage} alt="" />
+                            <img src={active[1]} alt={active[0]} />
                         </div>
                     </div>
                 </div>

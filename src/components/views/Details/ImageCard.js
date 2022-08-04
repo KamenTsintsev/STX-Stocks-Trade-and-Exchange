@@ -1,23 +1,18 @@
 import "./ImageCard.scss";
 
-const imageCard = ({
-    image,
-    onMouseOverImageHangler,
-    active,
-    activeCardHoverHandler,
-}) => {
+const imageCard = ({ imageData = "", active, activeCardHoverHandler }) => {
     const onMouseOverHandler = (e) => {
-        onMouseOverImageHangler(e);
-        activeCardHoverHandler(image);
+        activeCardHoverHandler(imageData);
     };
+
     return (
         <li
             className={
-                "imageCardContainer " + (active == image ? "active" : "")
+                "imageCardContainer " + (active == imageData ? "active" : "")
             }
             onMouseOver={onMouseOverHandler}
         >
-            <img src={image} />
+            <img src={imageData[1]} alt={imageData[1]} />
         </li>
     );
 };

@@ -1,26 +1,12 @@
-import { useState, useEffect } from "react";
-
 import "./ItemCard.scss";
 
 export default function ItemCard({ item }) {
-    const [coverImg, setCoverImg] = useState("");
-
-    useEffect(() => {
-        const imgReq = async () => {
-            const img = await import(
-                "../../../images/products/nissan350z/1.jpg"
-                // baseImgURL + item.imageArr[0]
-                // "C:/Kamen/Softuni-Program/FrontEnd - JS/REACT - JS/exam-project/src/images/products/nissan350z/2.jpg"
-            );
-            setCoverImg(img.default);
-        };
-        imgReq();
-    }, []);
+    const [alt, src] = item.images ? item.images[0] : ["", ""];
 
     return (
         <div className="itemCard">
             <header className="imageHolder">
-                <img src={coverImg} alt="" />
+                <img src={src || ""} alt={alt} />
             </header>
             <main className="info">
                 <p className="text-14px bold title">{item.title}</p>
