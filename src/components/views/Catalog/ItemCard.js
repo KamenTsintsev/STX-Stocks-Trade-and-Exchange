@@ -6,7 +6,7 @@ export default function ItemCard({ item }) {
     return (
         <div className="itemCard">
             <header className="imageHolder">
-                <img src={src || ""} alt={alt} />
+                <img src={src || ""} alt={alt} className={"image"} />
             </header>
             <main className="info">
                 <p className="text-14px bold title">{item.title}</p>
