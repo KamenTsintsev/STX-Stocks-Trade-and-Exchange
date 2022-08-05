@@ -1517,7 +1517,7 @@
                     "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
             },
             "847ec027-f659-4086-8032-5173e2f9c93a": {
-                email: "theWitcher@gmail.com.", // 0 / / / /
+                email: "theWitcher@gmail.com",
                 firstName: "Geralt",
                 lastName: "of Rivia",
                 age: 99,
@@ -1535,7 +1535,7 @@
                     "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
             },
             "9bd2535c-e6e0-45d2-9882-2ad67262734f": {
-                email: "ivanP@abv.bg", // 4 / camera / chopper / iceCreamMaker / chair
+                email: "ivanP@abv.bg", // 4 / camera / chopper / iceCreamMaker / chair ••••
                 firstName: "Ivan",
                 lastName: "Petrov",
                 age: 28,
