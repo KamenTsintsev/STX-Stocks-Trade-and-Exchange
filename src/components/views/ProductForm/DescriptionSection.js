@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 
 const DescriptionSection = ({
-    productData,
+    description,
     setProductData,
-    errors,
     setErrors,
 }) => {
     const [isDescriptionErrorFired, setIsDescriptionErrorFired] =
@@ -12,7 +11,7 @@ const DescriptionSection = ({
 
     useEffect(() => {
         if (isDescriptionErrorFired) {
-            if (productData.description.length < 80) {
+            if (description.length < 80) {
                 setDescriptionError(
                     "This field requires more than 80 characters!"
                 );
@@ -20,19 +19,19 @@ const DescriptionSection = ({
                     return { ...err, description: true };
                 });
             }
-            if (productData.description.length == 0) {
+            if (description.length == 0) {
                 setDescriptionError("This field is recomended!");
                 setErrors((err) => {
                     return { ...err, description: true };
                 });
             }
-            if (productData.description.length >= 80) {
+            if (description.length >= 80) {
                 setDescriptionError("");
                 setErrors((err) => {
                     return { ...err, description: false };
                 });
             }
-            if (productData.description.length > 9000) {
+            if (description.length > 9000) {
                 setDescriptionError(
                     "You are allowed to use maximum of 9000 characters!"
                 );
@@ -41,7 +40,14 @@ const DescriptionSection = ({
                 });
             }
         }
-    }, [isDescriptionErrorFired, descriptionError, productData.description]);
+
+        // edit functionality
+        if (description != "") {
+            setErrors((err) => {
+                return { ...err, description: false };
+            });
+        }
+    }, [isDescriptionErrorFired, descriptionError, description]);
 
     const onInputChangeHandler = (e) => {
         setProductData((prevState) => {
@@ -62,7 +68,7 @@ const DescriptionSection = ({
                     id="description"
                     placeholder="ex: The phone has little scratch, but otherwise is in perfect shape..."
                     className={descriptionError ? "inputError" : ""}
-                    value={productData.description || ""}
+                    value={description || ""}
                     onChange={onInputChangeHandler}
                     onBlur={() =>
                         !isDescriptionErrorFired &&
@@ -71,9 +77,7 @@ const DescriptionSection = ({
                     required
                 ></textarea>
                 <div className="textareaErrorField">
-                    <p className="text-12px bold">
-                        {productData.description.length}/9000
-                    </p>
+                    <p className="text-12px bold">{description.length}/9000</p>
                     {descriptionError && (
                         <p className="text-12px bold danger">
                             {descriptionError}

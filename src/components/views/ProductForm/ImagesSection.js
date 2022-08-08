@@ -5,14 +5,14 @@ import { faImage } from "@fortawesome/free-solid-svg-icons";
 
 import "./ImagesSection.scss";
 
-const ImagesSection = ({ productData, setProductData, errors, setErrors }) => {
+const ImagesSection = ({ dataImages, setProductData,  setErrors }) => {
     const [isImagesErrorFired, setIsImagesErrorFired] = useState(false);
     const [imagesError, setImagesError] = useState(null);
     const [images, setImages] = useState([]);
 
     useEffect(() => {
         if (isImagesErrorFired) {
-            if (productData.images.length > 6) {
+            if (dataImages.length > 6) {
                 setImagesError(
                     "No more than 6 images! Please select the most important ones."
                 );
@@ -20,13 +20,13 @@ const ImagesSection = ({ productData, setProductData, errors, setErrors }) => {
                     return { ...err, images: true };
                 });
             }
-            if (productData.images.length <= 6) {
+            if (dataImages.length <= 6) {
                 setImagesError("");
                 setErrors((err) => {
                     return { ...err, images: false };
                 });
             }
-            if (productData.images.length == 0) {
+            if (dataImages.length == 0) {
                 setImagesError(
                     "This field is recomended! Please select at least 1 image."
                 );
@@ -35,7 +35,10 @@ const ImagesSection = ({ productData, setProductData, errors, setErrors }) => {
                 });
             }
         }
-    }, [isImagesErrorFired, imagesError, productData.images]);
+
+        // there is no Edit functionality for images for RN,
+        // so the users will have to select the images again unfortunately
+    }, [isImagesErrorFired, imagesError, dataImages]);
 
     useEffect(() => {
         setProductData((data) => {

@@ -1,27 +1,27 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-const TitleSection = ({ productData, setProductData, errors, setErrors }) => {
+const TitleSection = ({ title, category, setProductData, setErrors }) => {
     const [isTitleErrorFired, setIsTitleErrorFired] = useState(false);
-    const [isCategoryErrorFired, setIsCategoryErrorFired] = useState(false);
     const [titleError, setTitleError] = useState(null);
+    const [isCategoryErrorFired, setIsCategoryErrorFired] = useState(false);
     const [categoryError, setCategoryError] = useState(null);
 
     useEffect(() => {
         if (isTitleErrorFired) {
-            if (productData.title.length < 16) {
+            if (title.length < 16) {
                 setTitleError("This field requires more than 16 characters");
                 setErrors((err) => {
                     return { ...err, title: true };
                 });
             }
-            if (productData.title.length == 0) {
+            if (title.length == 0) {
                 setTitleError("This field is recomended!");
                 setErrors((err) => {
                     return { ...err, title: true };
                 });
             }
-            if (productData.title.length >= 16) {
+            if (title.length >= 16) {
                 setTitleError("");
                 setErrors((err) => {
                     return { ...err, title: false };
@@ -29,7 +29,7 @@ const TitleSection = ({ productData, setProductData, errors, setErrors }) => {
             }
         }
         if (isCategoryErrorFired) {
-            if (productData.category == "") {
+            if (category == "") {
                 setCategoryError(true);
                 setErrors((err) => {
                     return { ...err, category: true };
@@ -41,13 +41,13 @@ const TitleSection = ({ productData, setProductData, errors, setErrors }) => {
                 });
             }
         }
-    }, [
-        isTitleErrorFired,
-        isCategoryErrorFired,
-        titleError,
-        productData.title,
-        productData.category,
-    ]);
+        // edit functionality
+        if (title != "" && category != "") {
+            setErrors((err) => {
+                return { ...err, title: false, category: false };
+            });
+        }
+    }, [isTitleErrorFired, isCategoryErrorFired, titleError, title, category]);
 
     const onInputChangeHandler = (e) => {
         setProductData((prevState) => {
@@ -57,7 +57,6 @@ const TitleSection = ({ productData, setProductData, errors, setErrors }) => {
             };
         });
     };
-
     return (
         <section className="titleSectionContainer section">
             <h4>What do you offer?</h4>
@@ -69,7 +68,7 @@ const TitleSection = ({ productData, setProductData, errors, setErrors }) => {
                     type="text"
                     placeholder="ex: Apple MacBook Air 256GB"
                     className={titleError ? "inputError" : ""}
-                    value={productData.title || ""}
+                    value={title || ""}
                     onChange={onInputChangeHandler}
                     onBlur={() =>
                         !isTitleErrorFired &&
@@ -86,7 +85,7 @@ const TitleSection = ({ productData, setProductData, errors, setErrors }) => {
                 <select
                     id="category"
                     name="category"
-                    defaultValue={""}
+                    value={category || ""}
                     onChange={onInputChangeHandler}
                     onBlur={() =>
                         !isCategoryErrorFired &&

@@ -1,25 +1,38 @@
 import { useState, useEffect } from "react";
 
-const PriceSection = ({ productData, setProductData, errors, setErrors }) => {
+const PriceSection = ({
+    price,
+    condition,
+    delivery,
+    setProductData,
+    setErrors,
+}) => {
     const [isPriceErrorFired, setIsPriceErrorFired] = useState(false);
     const [priceError, setPriceError] = useState(null);
 
     useEffect(() => {
         if (isPriceErrorFired) {
-            if (productData.price.length == 0) {
+            if (price.length == 0) {
                 setPriceError("This field is recomended!");
                 setErrors((err) => {
                     return { ...err, price: true };
                 });
             }
-            if (productData.price.length > 0) {
+            if (price.length > 0) {
                 setPriceError("");
                 setErrors((err) => {
                     return { ...err, price: false };
                 });
             }
         }
-    }, [isPriceErrorFired, priceError, productData.price]);
+
+        // edit functionality
+        if (price != "") {
+            setErrors((err) => {
+                return { ...err, price: false };
+            });
+        }
+    }, [isPriceErrorFired, priceError, price]);
 
     const onInputChangeHandler = (e) => {
         if (e.target.type == "radio") {
@@ -39,6 +52,16 @@ const PriceSection = ({ productData, setProductData, errors, setErrors }) => {
         }
     };
 
+    const onPriceInputBlur = (e) => {
+        setProductData((prevState) => {
+            return {
+                ...prevState,
+                [e.target.name]: Number(e.target.value).toFixed(2),
+            };
+        });
+    };
+    // FIND A WAY TO DISABLE input[type=number] scroll effect
+    // or change it with type=text and add Regex
     return (
         <section className="priceSectionContainer section">
             <h4>Price</h4>
@@ -49,14 +72,16 @@ const PriceSection = ({ productData, setProductData, errors, setErrors }) => {
                         type="number"
                         name="price"
                         id="price"
+                        step={0.01}
                         placeholder="ex: 799.99"
                         className={priceError ? "inputError" : ""}
-                        value={productData.price}
+                        value={price}
                         onChange={onInputChangeHandler}
-                        onBlur={() =>
+                        onBlur={(e) => {
+                            onPriceInputBlur(e);
                             !isPriceErrorFired &&
-                            setIsPriceErrorFired((state) => !state)
-                        }
+                                setIsPriceErrorFired((state) => !state);
+                        }}
                         required
                     />
                     <label htmlFor="price">$</label>
@@ -68,11 +93,7 @@ const PriceSection = ({ productData, setProductData, errors, setErrors }) => {
             <div className="additionalInformation">
                 <h5>Additional information</h5>
                 <div className="conditionContainer">
-                    <label
-                        htmlFor={
-                            productData.condition == "new" ? "used" : "new"
-                        }
-                    >
+                    <label htmlFor={condition == "new" ? "used" : "new"}>
                         Condition*
                     </label>
                     <div className="radioContainer">
@@ -82,7 +103,7 @@ const PriceSection = ({ productData, setProductData, errors, setErrors }) => {
                                 name="condition"
                                 id="new"
                                 value={"new"}
-                                checked={productData.condition == "new"}
+                                checked={condition == "new"}
                                 onChange={onInputChangeHandler}
                             />
                             <label htmlFor="new">New</label>
@@ -93,7 +114,7 @@ const PriceSection = ({ productData, setProductData, errors, setErrors }) => {
                                 name="condition"
                                 id="used"
                                 value={"used"}
-                                checked={productData.condition == "used"}
+                                checked={condition == "used"}
                                 onChange={onInputChangeHandler}
                             />
                             <label htmlFor="used">Used</label>
@@ -101,11 +122,7 @@ const PriceSection = ({ productData, setProductData, errors, setErrors }) => {
                     </div>
                 </div>
                 <div className="deliveryContainer">
-                    <label
-                        htmlFor={
-                            productData.delivery == "buyer" ? "seller" : "buyer"
-                        }
-                    >
+                    <label htmlFor={delivery == "buyer" ? "seller" : "buyer"}>
                         Delivery is covered by*
                     </label>
                     <div className="radioContainer">
@@ -115,7 +132,7 @@ const PriceSection = ({ productData, setProductData, errors, setErrors }) => {
                                 name="delivery"
                                 id="buyer"
                                 value={"buyer"}
-                                checked={productData.delivery == "buyer"}
+                                checked={delivery == "buyer"}
                                 onChange={onInputChangeHandler}
                             />
                             <label htmlFor="buyer">Buyer</label>
@@ -126,7 +143,7 @@ const PriceSection = ({ productData, setProductData, errors, setErrors }) => {
                                 name="delivery"
                                 id="seller"
                                 value={"seller"}
-                                checked={productData.delivery == "seller"}
+                                checked={delivery == "seller"}
                                 onChange={onInputChangeHandler}
                             />
                             <label htmlFor="seller">Seller</label>
