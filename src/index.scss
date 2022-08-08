@@ -145,11 +145,32 @@ input {
 .success {
     color: pal.$success0;
 }
+
 .warning {
     color: pal.$warning0;
 }
+
 .danger {
     color: pal.$danger0;
+}
+
+.errorContainer {
+    width: 100%;
+    padding: 20px 30px 0 30px;
+}
+
+.error {
+    width: 100%;
+    border-radius: 6px;
+
+    padding: 5px;
+
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: pal.$danger0;
+    background-color: pal.$danger5;
 }
 
 // SCROLLBAR SETTINGS
