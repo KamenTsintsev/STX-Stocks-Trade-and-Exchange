@@ -13,6 +13,9 @@ $gray-3: #0e1113;
 $black: #000;
 
 // Primary
+$primary6: #e3efff;
+$primary5: #d1e4fc;
+$primary4: #c2ddfd;
 $primary3: #afd4ff;
 $primary2: #76aae7;
 $primary1: #468ce0;
@@ -34,6 +37,8 @@ $secondary-3: #987300;
 $accent: #1fd6ff;
 
 // Negative/Danger
+$danger5: #fadede;
+$danger4: #fec9d0;
 $danger3: #ffb0bb;
 $danger2: #f57b8c;
 $danger1: #e64f64;
@@ -76,6 +81,9 @@ $success-3: #00572b;
     black: $black;
 
     // Primary
+    primary6: $primary6;
+    primary5: $primary5;
+    primary4: $primary4;
     primary3: $primary3;
     primary2: $primary2;
     primary1: $primary1;
@@ -97,6 +105,8 @@ $success-3: #00572b;
     accent: $accent;
 
     // Negative/Danger
+    danger5: $danger5;
+    danger4: $danger4;
     danger3: $danger3;
     danger2: $danger2;
     danger1: $danger1;
