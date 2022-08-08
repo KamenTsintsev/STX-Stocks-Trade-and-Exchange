@@ -140,7 +140,7 @@ export default function Header() {
                     </li>
                     <li className="navItem">
                         <Link
-                            to={"/addItem"}
+                            to={"/additem"}
                             className={"navLinks"}
                             onClick={() => setSideMenuState(false)}
                         >
