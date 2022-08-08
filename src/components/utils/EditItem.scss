@@ -1,0 +1,23 @@
+@use "./palette.scss" as pal;
+
+.editIconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    border: 2px solid pal.$primary5;
+    border-radius: 6px;
+    padding: 2px;
+
+    .i {
+        color: pal.$primary5;
+    }
+
+    &:hover {
+        border: 2px solid pal.$primary2;
+        .i {
+            color: pal.$primary2;
+        }
+    }
+}
