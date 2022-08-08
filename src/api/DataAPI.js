@@ -2,6 +2,8 @@ import * as api from "./API";
 
 const endpoints = {
     getAllItems: "/data/items?sortBy=_createdOn%20desc",
+    getMyItems: (userId) =>
+        `/data/items?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`,
     createItem: "/data/items",
     getItemById: "/data/items/",
     editItem: "/data/items/",
@@ -14,6 +16,10 @@ const endpoints = {
 
 export async function getAllItems() {
     return await api.get(endpoints.getAllItems);
+}
+
+export async function getMyItems(userId) {
+    return await api.get(endpoints.getMyItems(userId));
 }
 
 export async function getById(id) {
