@@ -40,6 +40,9 @@
         padding: 15px;
 
         .priceHolder {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
             text-align: end;
         }
     }
