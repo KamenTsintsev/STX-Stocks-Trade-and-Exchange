@@ -40,6 +40,16 @@
             background-color: pal.$secondary-1;
         }
     }
+
+    &.danger {
+        background-color: pal.$danger3;
+        color: pal.$danger-1;
+
+        &:hover {
+            background-color: pal.$danger1;
+            color: pal.$danger5;
+        }
+    }
 }
 
 .invertedButton {
