@@ -51,7 +51,19 @@ function App() {
                         />
 
                         <Route
-                            path={"/addItem"}
+                            path="/myaccount/*"
+                            element={
+                                <ProtectedRoute
+                                    isUserLogged={!isUserLoggedIn}
+                                    redirectPath={"/authentication/login"}
+                                >
+                                    <Catalog isMyAccount={true} />
+                                </ProtectedRoute>
+                            }
+                        />
+
+                        <Route
+                            path={"/additem"}
                             element={
                                 <ProtectedRoute
                                     isUserLogged={!isUserLoggedIn}
@@ -63,7 +75,29 @@ function App() {
                         />
 
                         <Route
-                            path={"/details/:itemID"}
+                            path={"edit/:itemId"}
+                            element={
+                                <ProtectedRoute
+                                    isUserLogged={!isUserLoggedIn}
+                                    redirectPath={"/authentication/login"}
+                                >
+                                    <ProductForm />
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route
+                            path={"myaccount/details/:itemId"}
+                            element={
+                                <ProtectedRoute
+                                    isUserLogged={!isUserLoggedIn}
+                                    redirectPath={"/authentication/login"}
+                                >
+                                    <Details isMyAccount={true} />
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route
+                            path={"/details/:itemId"}
                             element={<Details />}
                         />
 
