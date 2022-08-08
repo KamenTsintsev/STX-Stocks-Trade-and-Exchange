@@ -1,15 +1,14 @@
-import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import PrimaryButton from "../../Buttons/PrimaryButton";
 import AuthContext from "../../../contexts/authenticationContext";
+import LocationContext from "../../../contexts/locationContext";
 
 import "./Form.scss";
 
-export default function FormLogin() {
+export default function FormLogin({ setAuthError }) {
     const userContext = useContext(AuthContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate();
 
     const emailChangeHandler = (e) => {
         setEmail(e.target.value);
@@ -18,10 +17,17 @@ export default function FormLogin() {
         setPassword(e.target.value);
     };
 
-    const onSubmitHandler = async (e) => {
+    useEffect(() => {
+        return () => setAuthError("");
+    }, [setAuthError]);
+
+    const onSubmitHandler = (e) => {
         e.preventDefault();
-        userContext.login(email, password);
-        navigate(-1);
+
+        userContext.login(email, password).catch(() => {
+            setAuthError("Invalid Email and/or Password.");
+            setPassword("");
+        });
     };
 
     return (

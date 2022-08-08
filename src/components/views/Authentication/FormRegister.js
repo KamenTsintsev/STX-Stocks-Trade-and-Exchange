@@ -1,16 +1,19 @@
-import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import PrimaryButton from "../../Buttons/PrimaryButton";
 import AuthContext from "../../../contexts/authenticationContext";
+import LocationContext from "../../../contexts/locationContext";
 
 import "./Form.scss";
 
-export default function FormRegister() {
+export default function FormRegister({ setAuthError }) {
     const userContext = useContext(AuthContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [rePass, setRePass] = useState("");
-    const navigate = useNavigate();
+
+    useEffect(() => {
+        return () => setAuthError("");
+    }, [setAuthError]);
 
     const emailHandler = (e) => {
         setEmail(e.target.value);
@@ -24,12 +27,18 @@ export default function FormRegister() {
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-        if (password !== rePass) {
-            throw new Error("Passwords don't match!");
-        }
-        userContext.register(email, password);
 
-        navigate(-1);
+        if (password !== rePass) {
+            setAuthError("Passwords do NOT match.");
+        } else {
+            userContext
+                .register(email, password)
+                .catch(() => {
+                    setAuthError("User with this Email already exist.");
+                    setPassword("");
+                    setRePass("");
+                });
+        }
     };
     return (
         <div className="registerFormContainer">
@@ -56,7 +65,7 @@ export default function FormRegister() {
 
                 <label htmlFor="rePass">Repeat Password</label>
                 <input
-                    type="rePass"
+                    type="password"
                     name="rePass"
                     id="rePass"
                     placeholder="••••••••"
@@ -65,7 +74,7 @@ export default function FormRegister() {
                 />
 
                 <PrimaryButton cName={"primary1"} type={"submit"}>
-                    {"Log in"}
+                    {"Register"}
                 </PrimaryButton>
             </form>
         </div>

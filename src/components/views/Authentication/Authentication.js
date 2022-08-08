@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { Routes, Route, NavLink, useNavigate } from "react-router-dom";
-import Logo from "../../utils/Logo";
-import "./Authentication.scss";
 import FormLogin from "./FormLogin";
 import FormRegister from "./FormRegister";
+import Logo from "../../utils/Logo";
+
+import "./Authentication.scss";
 
 export default function Authentication() {
+    const [authError, setAuthError] = useState("");
     return (
         <main className="authMain">
             <Logo width={"180px"} fill={"primary0"} className={"logo"} />
@@ -29,13 +32,26 @@ export default function Authentication() {
                         </li>
                     </ul>
                 </nav>
+                {authError && (
+                    <div className="errorContainer">
+                        <p className="error">{authError}</p>
+                    </div>
+                )}
                 <div className="formContent">
                     <Routes>
-                        <Route index element={<FormLogin />}></Route>
-                        <Route path="login" element={<FormLogin />}></Route>
+                        <Route
+                            index
+                            element={<FormLogin setAuthError={setAuthError} />}
+                        ></Route>
+                        <Route
+                            path="login"
+                            element={<FormLogin setAuthError={setAuthError} />}
+                        ></Route>
                         <Route
                             path="register"
-                            element={<FormRegister />}
+                            element={
+                                <FormRegister setAuthError={setAuthError} />
+                            }
                         ></Route>
                     </Routes>
                 </div>
