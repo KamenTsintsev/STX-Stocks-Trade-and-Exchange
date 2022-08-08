@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useCallback } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import {
     login as loginApi,
@@ -8,12 +8,14 @@ import {
 } from "../api/UserAPI";
 import { getUserData } from "../api/Utils";
 
+import LocationContext from "./locationContext";
+
 const AuthContext = createContext({
     userData: "",
     userId: "",
     token: "",
     isLoggedIn: false,
-    loggedIn: false,
+    // loggedIn: false,
     login: () => {},
     register: () => {},
     logout: () => {},
@@ -29,6 +31,8 @@ export const AuthContextProvider = (props) => {
     const [token, setToken] = useState(userData.accessToken || "");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [initialState, setInitialState] = useState(JSON.stringify(userData));
+
+    const { location } = useContext(LocationContext);
 
     useEffect(() => {
         async function verifyToken() {
@@ -57,23 +61,35 @@ export const AuthContextProvider = (props) => {
     }, [initialState]);
 
     const login = async (email, password) => {
-        const userData = await loginApi(email, password);
+        try {
+            const userData = await loginApi(email, password);
 
-        setInitialState(JSON.stringify(userData));
-        setUserData(userData);
-        setToken(userData.accessToken);
-        setUserId(userData._id);
-        setIsLoggedIn(true);
+            setInitialState(JSON.stringify(userData));
+            setUserData(userData);
+            setToken(userData.accessToken);
+            setUserId(userData._id);
+            setIsLoggedIn(true);
+
+            navigate(location);
+        } catch (error) {
+            throw error;
+        }
     };
 
     const register = async (email, password) => {
-        const userData = await registerApi(email, password);
+        try {
+            const userData = await registerApi(email, password);
 
-        setInitialState(JSON.stringify(userData));
-        setUserData(userData);
-        setToken(userData?.accessToken);
-        setUserId(userData._id);
-        setIsLoggedIn(true);
+            setInitialState(JSON.stringify(userData));
+            setUserData(userData);
+            setToken(userData?.accessToken);
+            setUserId(userData._id);
+            setIsLoggedIn(true);
+
+            navigate(location);
+        } catch (error) {
+            throw error;
+        }
     };
 
     const logout = async () => {
@@ -81,9 +97,11 @@ export const AuthContextProvider = (props) => {
             await LogoutApi();
 
             clearUserData();
+            navigate("/");
         } catch (error) {
             console.log(error);
             clearUserData();
+            navigate("/");
         }
     };
 
