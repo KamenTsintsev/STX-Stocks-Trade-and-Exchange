@@ -11,11 +11,11 @@ import { LastLocationProvider } from "./contexts/locationContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <BrowserRouter>
-        <AuthContextProvider>
-            <LastLocationProvider>
+        <LastLocationProvider>
+            <AuthContextProvider>
                 <App />
-            </LastLocationProvider>
-        </AuthContextProvider>
+            </AuthContextProvider>
+        </LastLocationProvider>
     </BrowserRouter>
 );
 
