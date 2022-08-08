@@ -1,7 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import * as dataApi from "../../api/DataAPI";
-import { getIsUserLogged } from "../../api/Utils";
 import AuthContext from "../../contexts/authenticationContext";
 import LocationContext from "../../contexts/locationContext";
 
@@ -11,21 +10,20 @@ import { faHeart as slimHeart } from "@fortawesome/free-regular-svg-icons";
 
 import "./AddFavorite.scss";
 
-const AddFavorite = ({ itemID }) => {
+const AddFavorite = ({ itemId }) => {
     const navigate = useNavigate();
     const [isHovered, setIsHovered] = useState(false);
     const [isFavorite, setIsFavorite] = useState(false);
-    const [favoriteID, setFavoriteID] = useState("");
-    const isUserLogged = getIsUserLogged();
+    const [favoriteId, setFavoriteId] = useState("");
+    const { isLoggedIn, userId } = useContext(AuthContext);
 
-    const userId = useContext(AuthContext)?._id;
-    const { lastLocation, setLastLocation } = useContext(LocationContext);
+    const { setLastLocation } = useContext(LocationContext);
 
     useEffect(() => {
-        if (userId) {
+        if (isLoggedIn) {
             const getIsFavorite = async () => {
-                const result = await dataApi.isItemFavorite(itemID, userId);
-                setFavoriteID(result[0]?._id);
+                const result = await dataApi.isItemFavorite(itemId, userId);
+                setFavoriteId(result[0]?._id);
                 setIsFavorite(result.length ? true : false);
             };
 
@@ -42,19 +40,19 @@ const AddFavorite = ({ itemID }) => {
     }
 
     const onFavoriteClickHandler = async () => {
-        if (!isUserLogged) {
+        if (!isLoggedIn) {
             setLastLocation();
 
             return navigate("../authentication/login");
         }
 
         if (isFavorite) {
-            await dataApi.removeFavoriteItem(favoriteID);
+            await dataApi.removeFavoriteItem(favoriteId);
             setIsFavorite((state) => !state);
         }
 
         if (!isFavorite) {
-            await dataApi.addItemToFavorite(itemID);
+            await dataApi.addItemToFavorite(itemId);
             setIsFavorite((state) => !state);
         }
     };
