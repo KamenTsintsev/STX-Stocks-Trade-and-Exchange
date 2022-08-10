@@ -8,7 +8,7 @@ In the project directory, firstly install all of the dependencies:
 
 ### `npm install`
 
-After installing all of the dependencies, you will have to direct yourself to the server folder:
+After installing them, you will have to direct yourself to the server folder:
 
 ### `cd .\server\`
 
