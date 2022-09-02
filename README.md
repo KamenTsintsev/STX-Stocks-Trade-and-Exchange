@@ -17,3 +17,11 @@
     - `npm start`
 
 ## Info about the application
+
+### There are 4 users who are hardcoded:
+
+    3 of them share the same password `123456`:
+
+-   peter@mail.com
+-   george@mail.com
+-   ivan@mail.com
