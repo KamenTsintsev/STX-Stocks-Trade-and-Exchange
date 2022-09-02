@@ -1508,7 +1508,7 @@
     var protectedData = {
         users: {
             "35c62d76-8152-4626-8712-eeb96381bea8": {
-                email: "peter@abv.bg", // 1 / bed / 350z / windshieldFluid / blinkerFluidTshirt ••••
+                email: "peter@mail.com", // 1 / bed / 350z / windshieldFluid / blinkerFluidTshirt ••••
                 firstName: "Peter",
                 lastName: "Petrov",
                 age: 22,
@@ -1526,7 +1526,7 @@
                     "6df0d6929711bf082cd4d0ef4c59ffad121b7b81b779523814bbeaecbab10f24",
             },
             "c7b4d4c6-ca4c-43af-867c-d051c2bdf82a": {
-                email: "george@abv.bg", // 4 / keyboard / headphones / mouse / headlights ••••
+                email: "george@mail.com", // 4 / keyboard / headphones / mouse / headlights ••••
                 firstName: "George",
                 lastName: "Canon",
                 age: 36,
@@ -1535,7 +1535,7 @@
                     "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
             },
             "9bd2535c-e6e0-45d2-9882-2ad67262734f": {
-                email: "ivanP@abv.bg", // 4 / camera / chopper / iceCreamMaker / chair ••••
+                email: "ivanP@mail.com", // 4 / camera / chopper / iceCreamMaker / chair ••••
                 firstName: "Ivan",
                 lastName: "Petrov",
                 age: 28,
