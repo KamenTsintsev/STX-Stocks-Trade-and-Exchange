@@ -35,14 +35,20 @@ The 4th one is:
 
 > New Users can be created via the registration form
 
+---
+
 ### Adding new items
 
 New Items can be added trough the \"**Add Item**\" button.  
 It will send you to the \"**Add Product**\" form, where you have to fill all of the inputs.
+Note that you have to be logged in, otherwise you will be redirected to the Authentication page.
 
 > ##### Note:
 >
-> > For now images should be selected with _Shift + Click_, and if you forgot to add some, or if you want to remove some, you will have to sellect them again.  
-> > _When this is fixed, this Note will be removed._
+> For now images should be selected with _Shift + Click_, and if you forgot to add some, or if you want to remove some, you will have to sellect them again.  
+>  _When this is fixed, this Note will be removed._
 
 ### Editin / Deleting
+
+Editing and Deleting are only accesible if you are existing user, and if you have uploaded products.
+To Edit/Delete an existing product go to the _/myaccount_ page via the dropdown button, and select an item. Now instead of _Like_ and _Buy now_ buttons, the Owner will see _Edit_ and _Delete item_. Deleting is straightforward clicking and agreeing, followed by redirect to the _/myaccount_ page. Editing is almost like adding new item, but the Form is already filled. The case with the images stays the same.
