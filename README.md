@@ -20,15 +20,15 @@
 
 ### There are 4 users who are hardcoded:
 
-    3 of them share the same password *123456*:
+3 of them share the same password _123456_:
 
-    1. peter\@mail.com
+1. peter\@mail.com
 
-    2. george@mail.com
+2. george@mail.com
 
-    3. ivan@mail.com
+3. ivan@mail.com
 
-    The 4th one is:
+The 4th one is:
 
-    email: theWitcher@mail.com
-    Password: lookAtMyHorseMyHorseIsAmazing
+email: theWitcher@mail.com
+Password: lookAtMyHorseMyHorseIsAmazing
