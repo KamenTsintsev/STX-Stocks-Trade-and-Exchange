@@ -8,7 +8,7 @@
 
     - `cd .\server\`
 
-        And then start it:
+    And then start it with:
 
     - `node .\server.js`
 
@@ -22,7 +22,7 @@
 
 3 of them share the same password _123456_:
 
-1. peter\@mail.com
+1. peter@mail.com
 
 2. george@mail.com
 
@@ -30,5 +30,7 @@
 
 The 4th one is:
 
-email: theWitcher@mail.com
-Password: lookAtMyHorseMyHorseIsAmazing
+-   email: theWitcher@mail.com
+-   Password: lookAtMyHorseMyHorseIsAmazing
+
+> New Users can be created via the registration form
