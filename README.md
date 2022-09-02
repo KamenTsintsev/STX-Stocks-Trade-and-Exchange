@@ -34,3 +34,15 @@ The 4th one is:
 -   Password: lookAtMyHorseMyHorseIsAmazing
 
 > New Users can be created via the registration form
+
+### Adding new items
+
+New Items can be added trough the \"**Add Item**\" button.  
+It will send you to the \"**Add Product**\" form, where you have to fill all of the inputs.
+
+> ##### Note:
+>
+> > For now images should be selected with _Shift + Click_, and if you forgot to add some, or if you want to remove some, you will have to sellect them again.  
+> > _When this is fixed, this Note will be removed._
+
+### Editin / Deleting
