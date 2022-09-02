@@ -51,4 +51,7 @@ Note that you have to be logged in, otherwise you will be redirected to the Auth
 ### Editin / Deleting
 
 Editing and Deleting are only accesible if you are existing user, and if you have uploaded products.
-To Edit/Delete an existing product go to the _/myaccount_ page via the dropdown button, and select an item. Now instead of _Like_ and _Buy now_ buttons, the Owner will see _Edit_ and _Delete item_. Deleting is straightforward clicking and agreeing, followed by redirect to the _/myaccount_ page. Editing is almost like adding new item, but the Form is already filled. The case with the images stays the same.
+To Edit/Delete an existing product go to the _/myaccount_ page via the dropdown button, and select an item. Now instead of _Like_ and _Buy now_ buttons, the Owner will see _Edit_ and _Delete item_.
+
+-   Deleting is straightforward clicking and agreeing, followed by redirect to the _/myaccount_ page.
+-   Editing is almost like adding new item, but the Form is already filled. The case with the images stays the same.
