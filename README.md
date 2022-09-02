@@ -20,7 +20,7 @@
 
 ### There are 4 users who are hardcoded:
 
-3 of them share the same password _123456_:
+3 of them share the same password \"_123456_\":
 
 1. peter@mail.com
 
